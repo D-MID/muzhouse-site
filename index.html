@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MuzHouse — In-Home Music Lessons in Sacramento | A Modern Music School That Comes To You</title>
+<meta name="description" content="MuzHouse is a modern music school that comes to your home. Private guitar, violin, piano, voice, drums & more across Sacramento, Roseville, Rocklin, Folsom & Granite Bay — or online. $60 per lesson. Book a lesson today." />
+<meta name="theme-color" content="#FDF6EA" />
+<link rel="canonical" href="https://muzhouse.us/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="MuzHouse — A Modern Music School That Comes To You" />
+<meta property="og:description" content="Premium in-home, online & studio music lessons across the Sacramento region." />
+<meta property="og:image" content="images/hero-arch.jpg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+/* ===================================================================
+   MUZHOUSE — full site · Figma design language
+   Cream #FDF6EA · Espresso #4C433B · Cormorant Garamond + Montserrat
+   =================================================================== */
+:root{
+  --cream:#FDF6EA; --cream-2:#F7EEDF; --sand:#ECDBCA; --sand-2:#E5D2BD;
+  --espresso:#4C433B; --display:#3D362F; --cocoa:#6B5E52; --mocha:#AB937B;
+  --line:#E6D8C5; --gold:#B98D4B;
+  --maxw:1280px; --gutter:clamp(20px,5vw,60px); --r:20px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--espresso);
+  font-family:'Montserrat',system-ui,sans-serif;font-weight:400;line-height:1.7;font-size:clamp(15px,1.02vw,17px);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;line-height:1.04;margin:0;color:var(--display)}
+p{margin:0 0 1.1em}
+em{font-style:italic}
+.serif{font-family:'Cormorant Garamond',serif}
+.h2{font-size:clamp(2.4rem,5.2vw,4.2rem);font-weight:600}
+.kicker{font-family:'Montserrat',sans-serif;font-weight:500;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mocha)}
+.lede{font-size:clamp(1.05rem,1.5vw,1.3rem);color:var(--cocoa);line-height:1.6;font-weight:300}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+section{padding-block:clamp(78px,11vw,160px);position:relative}
+.bg-cream{background:var(--cream)}.bg-cream2{background:var(--cream-2)}.bg-sand{background:var(--sand)}
+.center{text-align:center;margin-inline:auto}
+.sec-head{max-width:780px;margin-bottom:clamp(44px,6vw,76px)}
+.sec-head .h2{margin-top:.4rem}
+
+/* Buttons */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.55em;
+  font-family:'Montserrat',sans-serif;font-weight:500;font-size:.92rem;letter-spacing:.02em;
+  padding:1.05em 2em;border-radius:4px;border:1px solid var(--espresso);cursor:pointer;
+  transition:transform .4s var(--ease),background .35s,color .35s,box-shadow .4s}
+.btn svg{width:1.05em;height:1.05em;transition:transform .45s var(--ease)}
+.btn:hover svg{transform:translateX(3px)}
+.btn::before{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.25),transparent);transform:skewX(-18deg);transition:left .7s var(--ease)}
+.btn:hover::before{left:170%}
+.btn-primary{background:var(--espresso);color:var(--cream)}
+.btn-primary:hover{background:var(--display);transform:translateY(-3px);box-shadow:0 14px 30px -14px rgba(60,54,47,.55)}
+.btn-ghost{background:transparent;color:var(--espresso)}
+.btn-ghost:hover{background:var(--espresso);color:var(--cream);transform:translateY(-3px)}
+
+/* Progress + nav */
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:100;transform:scaleX(0);transform-origin:0 50%;background:var(--espresso);will-change:transform}
+.nav{position:fixed;inset:0 0 auto 0;z-index:90;transition:background .4s,box-shadow .4s,padding .4s;padding-block:20px}
+.nav.scrolled{background:rgba(253,246,234,.9);backdrop-filter:saturate(140%) blur(12px);box-shadow:0 1px 0 var(--line);padding-block:12px}
+.nav-row{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:baseline;gap:2px;color:var(--espresso);font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;line-height:1}
+.brand i{font-style:italic;font-weight:500}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{font-size:.84rem;color:var(--cocoa);position:relative;font-weight:500;text-transform:capitalize;letter-spacing:.02em}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1px;background:var(--espresso);transition:width .35s var(--ease)}
+.nav-links a:hover{color:var(--espresso)}.nav-links a:hover::after{width:100%}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.menu-btn{display:none;background:none;border:0;cursor:pointer;flex-direction:column;gap:5px;padding:8px}
+.menu-btn span{width:24px;height:2px;background:var(--espresso)}
+
+/* Reveal + headline mask */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+[data-delay="1"]{transition-delay:.1s}[data-delay="2"]{transition-delay:.2s}[data-delay="3"]{transition-delay:.3s}[data-delay="4"]{transition-delay:.4s}
+.lines{display:block}
+.lines .ln{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
+.lines .ln > span{display:block;transition:transform 1s var(--ease)}
+html.js .lines .ln > span{transform:translateY(110%)}
+.lines.in .ln > span{transform:none}
+
+/* ---------- HERO ---------- */
+.hero{background:var(--cream);position:relative;overflow:hidden;padding-top:150px;padding-bottom:90px;text-align:center}
+.hero-curves{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:min(1500px,128%);z-index:0;opacity:.5;pointer-events:none}
+.hero-curves svg{width:100%;height:auto}
+.spark{position:absolute;color:var(--mocha);z-index:1;pointer-events:none;transform-origin:center}
+.spark svg{width:100%;height:100%;display:block}
+.spark.s1{left:20%;top:30%;width:30px;height:30px;animation:twinkle 3.4s ease-in-out .6s infinite}
+.spark.s2{right:18%;top:44%;width:38px;height:38px;animation:twinkle 3.9s ease-in-out 1.4s infinite}
+.spark.s3{left:12%;bottom:20%;width:24px;height:24px;animation:twinkle 4.2s ease-in-out .2s infinite}
+@keyframes twinkle{0%,100%{opacity:.4;transform:scale(.9) rotate(0)}50%{opacity:.9;transform:scale(1.18) rotate(45deg)}}
+.bgletter{position:absolute;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(40px,5vw,80px);color:var(--mocha);filter:blur(3px);opacity:.6;z-index:0;pointer-events:none;user-select:none}
+.hero-inner{position:relative;z-index:3;max-width:1100px;margin-inline:auto}
+.hero h1{font-family:'Cormorant Garamond',serif;font-weight:500;color:var(--display);font-size:clamp(3.4rem,11vw,8.5rem);line-height:.95;
+  text-shadow:0 0 1px rgba(253,246,234,.85),0 0 16px rgba(253,246,234,.7),0 0 36px rgba(253,246,234,.5)}
+.hero h1 em{font-style:italic;font-weight:500}
+.hero-arch{position:relative;z-index:2;width:clamp(240px,30vw,380px);aspect-ratio:413/503;margin:clamp(-30px,-3vw,-10px) auto 0;
+  animation:archIn 1.3s var(--ease) .1s both}
+.hero-arch .frame-img{position:absolute;inset:0;border-radius:200px 200px 6px 6px;overflow:hidden;box-shadow:0 30px 60px -32px rgba(60,54,47,.45)}
+.hero-arch img{position:absolute;left:0;top:-6.6%;width:100%;height:123%;object-fit:cover;animation:zoom 30s var(--ease) forwards}
+.hero-arch .fade{position:absolute;inset:0;border-radius:200px 200px 6px 6px;background:linear-gradient(to top,rgba(253,246,234,0) 24%,var(--cream))}
+@keyframes zoom{from{transform:scale(1)}to{transform:scale(1.05)}}
+@keyframes archIn{from{opacity:0;clip-path:inset(0 0 22% 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+.hero-sub{position:relative;z-index:3;font-size:clamp(1rem,1.4vw,1.2rem);color:var(--espresso);font-weight:400;letter-spacing:.3px;margin:26px auto 0;max-width:34ch;
+  animation:fadeUp 1s var(--ease) .55s both}
+.hero-actions{position:relative;z-index:3;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:26px;animation:fadeUp 1s var(--ease) .68s both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.hero-meta{position:relative;z-index:3;display:flex;gap:24px;flex-wrap:wrap;justify-content:center;margin-top:34px;font-size:.74rem;letter-spacing:.06em;color:var(--cocoa);text-transform:uppercase}
+.hero-meta b{color:var(--espresso);font-weight:600}
+
+/* ---------- WHY MUSIC ---------- */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(22px,2.4vw,44px)}
+.why-card{padding-top:26px;border-top:1px solid var(--line)}
+.why-card .wc-ico{width:30px;height:30px;color:var(--mocha);margin-bottom:16px;stroke-width:1.4}
+.why-card h3{font-size:1.9rem;margin-bottom:.3rem;font-weight:600}
+.why-card p{font-size:.95rem;color:var(--cocoa);margin:0}
+
+/* ---------- BENEFITS ---------- */
+.ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.8vw,26px)}
+.ben{background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:clamp(28px,3vw,44px);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.ben:hover{transform:translateY(-5px);box-shadow:0 24px 44px -28px rgba(60,54,47,.4)}
+.ben .ico{width:42px;height:42px;color:var(--espresso);margin-bottom:20px;stroke-width:1.4}
+.ben h3{font-size:1.7rem;margin-bottom:.3rem;font-weight:600}
+.ben p{font-size:.94rem;color:var(--cocoa);margin:0}
+
+/* ---------- FOUNDERS (pinned) ---------- */
+.pin-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(30px,5vw,80px);align-items:start}
+.pin-media{position:sticky;top:13vh;height:74vh;border-radius:240px 240px var(--r) var(--r);overflow:hidden;box-shadow:0 34px 70px -36px rgba(60,54,47,.5)}
+.pin-media img{width:100%;height:100%;object-fit:cover}
+.pin-media .tag{position:absolute;left:50%;transform:translateX(-50%);bottom:22px;color:var(--cream);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.pin-steps{padding-block:5vh}
+.pin-phrase{min-height:58vh;display:flex;flex-direction:column;justify-content:center}
+.pin-phrase .big{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.4vw,3.6rem);line-height:1.1;font-weight:500;color:var(--display)}
+.pin-phrase p{margin-top:1rem;color:var(--cocoa);max-width:42ch}
+
+/* ---------- HOW IT WORKS ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.2vw,34px)}
+.step{position:relative;padding-top:30px;counter-increment:s}
+.step .step-ico{width:34px;height:34px;color:var(--espresso);margin-bottom:14px;display:block;stroke-width:1.3}
+.step::before{content:"0" counter(s);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem;color:var(--mocha);display:block;margin-bottom:8px}
+.steps{counter-reset:s}
+.step h3{font-size:1.6rem;margin-bottom:.3rem;font-weight:600}
+.step p{font-size:.93rem;color:var(--cocoa);margin:0}
+
+/* ---------- INSTRUMENTS (Figma cards) ---------- */
+.inst-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,1.6vw,24px)}
+.inst-card{position:relative;background:var(--sand);border-radius:var(--r);padding:14px 14px 18px;opacity:1;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+html.js .inst-card{opacity:0;transform:translateY(26px)}
+html.js .inst-card.shown{opacity:1;transform:none}
+.inst-card:hover{transform:translateY(-6px);box-shadow:0 26px 48px -28px rgba(60,54,47,.45)}
+.inst-card .ph{border-radius:12px;overflow:hidden;aspect-ratio:282/220}
+.inst-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.inst-card:hover .ph img{transform:scale(1.06)}
+.inst-card .meta{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 6px 2px}
+.inst-card .lbl{display:flex;align-items:center;gap:9px;min-width:0}
+.inst-card .ico{width:21px;height:21px;color:var(--espresso);flex:none;stroke-width:1.5}
+.inst-card h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--espresso);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.inst-card .arw{flex:none;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--espresso);display:grid;place-items:center;color:var(--espresso);background:transparent;transition:.4s var(--ease)}
+.inst-card .arw svg{width:15px;height:15px;transition:transform .4s var(--ease)}
+.inst-card:hover .arw{background:var(--espresso);color:var(--cream)}
+.inst-card:hover .arw svg{transform:translate(1px,-1px)}
+
+/* ---------- TEACHERS ---------- */
+.teach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.4vw,32px)}
+.teacher{background:var(--cream);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.teacher:hover{transform:translateY(-7px);box-shadow:0 28px 52px -28px rgba(60,54,47,.42)}
+.teacher .ph{aspect-ratio:4/5;overflow:hidden;margin:14px 14px 0;border-radius:180px 180px 12px 12px}
+.teacher .ph img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.teacher:hover .ph img{transform:scale(1.05)}
+.teacher .body{padding:22px 26px 28px}
+.teacher .spec{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mocha);font-weight:600}
+.teacher h3{font-size:2rem;margin:.2rem 0 .4rem;font-weight:600}
+.teacher p{font-size:.93rem;color:var(--cocoa);margin:0 0 1rem}
+.teacher .choose{display:inline-flex;align-items:center;gap:.5em;font-weight:600;font-size:.85rem;color:var(--espresso);opacity:.55;transform:translateY(4px);transition:.45s var(--ease)}
+.teacher:hover .choose{opacity:1;transform:none}
+
+/* ---------- GALLERY ---------- */
+.gal{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(14px,1.6vw,22px)}
+.gal figure{margin:0;position:relative;border-radius:var(--r);overflow:hidden}
+.gal figure img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.gal figure:hover img{transform:scale(1.04)}
+.gal figcaption{position:absolute;left:20px;bottom:18px;color:var(--cream);font-size:.82rem;letter-spacing:.04em;text-shadow:0 1px 14px rgba(0,0,0,.5);z-index:2}
+.gal figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(40,32,26,.62))}
+.g-a{grid-column:span 7;aspect-ratio:7/5}.g-b{grid-column:span 5;aspect-ratio:5/5}
+.g-c{grid-column:span 5;aspect-ratio:5/5}.g-d{grid-column:span 7;aspect-ratio:7/5}
+
+/* ---------- TESTIMONIALS ---------- */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.2vw,28px)}
+.quote{background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:clamp(28px,3vw,40px)}
+.quote .stars{color:var(--gold);letter-spacing:3px;font-size:.95rem;margin-bottom:14px}
+.quote blockquote{margin:0 0 22px;font-family:'Cormorant Garamond',serif;font-size:1.5rem;line-height:1.4;font-style:italic;color:var(--display)}
+.quote .who{display:flex;align-items:center;gap:13px}
+.quote .av{width:42px;height:42px;border-radius:50%;background:var(--sand);display:grid;place-items:center;color:var(--espresso);font-weight:600;font-family:'Cormorant Garamond',serif;font-size:1.1rem}
+.quote .who b{display:block;font-size:.92rem;font-weight:600}
+.quote .who small{color:var(--mocha);font-size:.8rem}
+
+/* ---------- PRICING ---------- */
+.price-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(30px,5vw,72px);align-items:center}
+.price-card{background:var(--sand);border-radius:var(--r);padding:clamp(34px,4vw,56px);position:relative;overflow:hidden}
+.price-card .tag{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cocoa);font-weight:600}
+.price-card .amt{font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--display);font-size:clamp(4rem,8vw,6rem);line-height:1;margin:6px 0 2px}
+.price-card .amt span{font-size:1.3rem;color:var(--cocoa);font-style:italic}
+.price-card .per{color:var(--cocoa);margin-bottom:24px}
+.price-card .btn{width:100%}
+.price-list{list-style:none;padding:0;margin:0}
+.price-list li{display:flex;gap:14px;align-items:flex-start;padding:15px 0;border-top:1px solid var(--line);font-size:.98rem}
+.price-list li:first-child{border-top:0}
+.price-list svg{width:22px;height:22px;color:var(--espresso);flex:none;margin-top:1px;stroke-width:1.5}
+.price-list b{display:block;font-weight:600}.price-list span{color:var(--cocoa);font-size:.9rem}
+
+/* ---------- SERVICE AREAS ---------- */
+.area-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,72px);align-items:center}
+.area-list{columns:2;column-gap:34px}
+.area-item{break-inside:avoid;display:flex;align-items:center;gap:13px;padding:12px 0;border-bottom:1px solid var(--line);transition:color .3s}
+.area-item .dot{width:8px;height:8px;border-radius:50%;background:var(--mocha);transition:transform .3s,background .3s;flex:none}
+.area-item.active .dot{background:var(--espresso);transform:scale(1.6)}
+.area-item span:last-child{font-weight:500;font-size:.96rem}
+.map-wrap{position:relative;border-radius:var(--r);overflow:hidden;background:var(--sand);border:1px solid var(--line);aspect-ratio:4/3}
+.map-wrap svg{width:100%;height:100%}
+.map-dot{cursor:pointer}
+.map-dot circle.core{fill:var(--mocha);transition:.35s}
+.map-dot.active circle.core{fill:var(--espresso)}
+.map-dot circle.halo{fill:none;stroke:var(--espresso);opacity:0;transition:.35s}
+.map-dot.active circle.halo{opacity:.45;r:24}
+.map-dot text{font-family:'Montserrat',sans-serif;font-size:11px;fill:var(--cocoa);font-weight:500}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:880px;margin-inline:auto}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;padding:26px 0;display:flex;justify-content:space-between;gap:24px;align-items:center;
+  font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:600;color:var(--display);transition:color .3s,padding-left .35s var(--ease)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .pm{flex:none;width:24px;height:24px;position:relative}
+.faq summary .pm::before,.faq summary .pm::after{content:"";position:absolute;background:var(--espresso);border-radius:2px}
+.faq summary .pm::before{left:0;top:11px;width:24px;height:2px}
+.faq summary .pm::after{left:11px;top:0;width:2px;height:24px;transition:transform .4s var(--ease)}
+.faq details[open] summary .pm::after{transform:rotate(90deg)}
+.faq details[open] summary,.faq summary:hover{color:var(--mocha);padding-left:6px}
+.faq .ans{padding:0 0 28px;color:var(--cocoa);max-width:70ch}
+.faq .ans p{margin:0}
+.faq details[open] .ans{animation:faqIn .5s var(--ease)}
+@keyframes faqIn{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:none}}
+
+/* ---------- FINAL CTA ---------- */
+.final{position:relative;overflow:hidden;color:var(--cream);text-align:center}
+.final-media{position:absolute;inset:0;z-index:0}
+.final-media img{width:100%;height:100%;object-fit:cover}
+.final-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,32,26,.6),rgba(40,32,26,.82))}
+.final .wrap{position:relative;z-index:2}
+.final h2{font-size:clamp(2.6rem,6vw,5rem);max-width:18ch;margin-inline:auto;color:var(--cream)}
+.final .lede{color:rgba(253,246,234,.9);max-width:50ch;margin:1.1rem auto 2.2rem}
+
+/* ---------- BOOK / CONTACT ---------- */
+.book-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(36px,5vw,80px);align-items:start}
+.book-info ul{list-style:none;padding:0;margin:1.6rem 0 0}
+.book-info li{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--line)}
+.book-info li svg{width:22px;height:22px;color:var(--espresso);flex:none;margin-top:2px;stroke-width:1.4}
+.book-info li b{display:block;font-weight:600}.book-info li span{color:var(--cocoa);font-size:.92rem}
+.form{background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:clamp(26px,3vw,44px)}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--cocoa);margin-bottom:8px;font-weight:600}
+.field input,.field select,.field textarea{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:8px;background:var(--cream-2);font:inherit;font-size:.95rem;color:var(--espresso);transition:border .25s,box-shadow .25s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--espresso);box-shadow:0 0 0 3px rgba(76,67,59,.12)}
+.field textarea{resize:vertical;min-height:118px}
+.form .btn-primary{width:100%;margin-top:6px}
+.form .note{font-size:.78rem;color:var(--mocha);text-align:center;margin:14px 0 0}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form-ok{display:none;text-align:center;padding:20px 0}
+.form-ok.show{display:block}
+.form-ok .check{width:54px;height:54px;border-radius:50%;background:var(--espresso);display:grid;place-items:center;margin:0 auto 16px;color:var(--cream)}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--display);color:rgba(253,246,234,.75);padding-block:clamp(58px,7vw,92px) 34px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+footer .brand{color:var(--cream)}
+footer h4{font-family:'Montserrat',sans-serif;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(253,246,234,.5);margin:0 0 18px;font-weight:600}
+footer ul{list-style:none;padding:0;margin:0}
+footer li{margin-bottom:11px}
+footer a{font-size:.92rem}footer a:hover{color:var(--cream)}
+footer .tag{margin:16px 0 0;max-width:30ch;font-size:.9rem;line-height:1.6}
+.foot-bot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:clamp(44px,6vw,70px);padding-top:24px;border-top:1px solid rgba(253,246,234,.16);font-size:.82rem}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:1080px){.inst-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:980px){
+  .nav-links,.nav-cta .btn{display:none}.menu-btn{display:flex}
+  .why-grid{grid-template-columns:1fr 1fr;gap:32px}.ben-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr;gap:30px}.teach-grid{grid-template-columns:1fr 1fr}
+  .quotes{grid-template-columns:1fr}.pin-grid{grid-template-columns:1fr}
+  .pin-media{position:relative;top:0;height:60vh;margin-bottom:8px}.pin-phrase{min-height:auto;padding-block:30px}.pin-steps{padding-block:0}
+  .area-grid,.book-grid,.price-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr 1fr}
+  .gal{grid-template-columns:1fr 1fr}.g-a,.g-b,.g-c,.g-d{grid-column:span 1;aspect-ratio:4/5}
+  .inst-grid{grid-template-columns:repeat(2,1fr)}html.js .inst-card{opacity:1;transform:none}
+  .bgletter{display:none}
+}
+@media(max-width:560px){
+  .why-grid,.ben-grid,.steps,.teach-grid,.foot-grid,.row2{grid-template-columns:1fr}
+  .area-list{columns:1}.hero-actions .btn{flex:1 1 auto}.inst-grid{gap:12px}.inst-card h3{font-size:1.35rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}.hero-arch img{animation:none}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-row">
+    <a href="#top" class="brand" aria-label="MuzHouse home"><i>Muz</i>House</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#about">About Us</a><a href="#instruments">Lessons</a><a href="#pricing">Pricing</a><a href="#teachers">Teachers</a><a href="#book">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#instruments" class="btn btn-ghost">Explore Lessons</a>
+      <a href="#book" class="btn btn-primary">Book a Lesson</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- ============ 1 · HERO ============ -->
+<section class="hero" aria-label="MuzHouse — a modern music school that comes to you">
+  <div class="hero-curves" aria-hidden="true">
+    <svg viewBox="0 0 1500 700" fill="none" stroke="#AB937B" stroke-width="1.4">
+      <path d="M0 320 C300 200 560 190 760 320 C960 450 1240 430 1500 310" opacity=".5"/>
+      <path d="M0 360 C320 250 560 220 760 360 C980 490 1230 470 1500 360" opacity=".4"/>
+      <path d="M0 400 C340 300 560 260 760 400 C1000 540 1220 520 1500 405" opacity=".3"/>
+    </svg>
+  </div>
+  <span class="bgletter" style="left:5%;bottom:14%" aria-hidden="true">m</span>
+  <span class="bgletter" style="left:14%;top:28%" aria-hidden="true">u</span>
+  <span class="bgletter" style="right:6%;top:14%" aria-hidden="true">s</span>
+  <span class="bgletter" style="right:12%;top:36%" aria-hidden="true">e</span>
+  <span class="spark s1" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 6.4 5 10.8 12 12-7 1.2-11.4 5.6-12 12-.6-6.4-5-10.8-12-12 7-1.2 11.4-5.6 12-12z"/></svg></span>
+  <span class="spark s2" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 6.4 5 10.8 12 12-7 1.2-11.4 5.6-12 12-.6-6.4-5-10.8-12-12 7-1.2 11.4-5.6 12-12z"/></svg></span>
+  <span class="spark s3" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 6.4 5 10.8 12 12-7 1.2-11.4 5.6-12 12-.6-6.4-5-10.8-12-12 7-1.2 11.4-5.6 12-12z"/></svg></span>
+  <div class="hero-inner wrap">
+    <h1 class="lines" data-mask><em>M</em>odern <em>M</em>usic <em>S</em>chool</h1>
+    <div class="hero-arch">
+      <div class="frame-img"><img src="images/hero-arch.jpg" alt="MuzHouse instructors in a golden Sacramento meadow at sunset" fetchpriority="high" /></div>
+      <div class="fade" aria-hidden="true"></div>
+    </div>
+    <p class="hero-sub">A modern music school that comes to your home — private lessons in your living room, online, or at our studios across Sacramento.</p>
+    <div class="hero-actions">
+      <a href="#book" class="btn btn-primary">Book a Lesson
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="#instruments" class="btn btn-ghost">Explore Lessons</a>
+    </div>
+    <div class="hero-meta"><span><b>We come to you</b></span><span><b>Ages 4 to adult</b></span><span><b>$60 per lesson</b></span><span><b>10+ cities &amp; online</b></span></div>
+  </div>
+</section>
+
+<!-- ============ 2 · WHY MUSIC MATTERS ============ -->
+<section class="bg-cream2" id="why" aria-labelledby="why-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker">Why Music Matters</p>
+      <h2 class="h2" id="why-h">We don't teach instruments.<br>We grow <em>people</em>.</h2>
+      <p class="lede" style="margin-top:1.1rem">A child who learns music learns something deeper: how to try, how to fail kindly, how to keep going, and how to stand in a room and be fully themselves. That stays long after the last note.</p>
+    </div>
+    <div class="why-grid">
+      <article class="why-card reveal"><svg class="wc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg><h3>Confidence</h3><p>Every lesson ends in a small win. Those wins compound into a child who believes they can learn hard things.</p></article>
+      <article class="why-card reveal" data-delay="1"><svg class="wc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9l-3.5 3 1 4.8L12 14.6 8 16.8l1-4.8L5.5 9l4.6-1.4z"/></svg><h3>Creativity</h3><p>We teach improvisation and writing early — so students don't just play music, they make it their own.</p></article>
+      <article class="why-card reveal" data-delay="2"><svg class="wc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-7"/><path d="M12 14c0-3-2.4-5.5-5.5-5.5C6 12 8.5 14 12 14z"/><path d="M12 11c0-3 2.4-5.5 5.5-5.5C18 9 15.5 11 12 11z"/></svg><h3>Growth</h3><p>Practice teaches patience and discipline that quietly shows up in school, sport, and life.</p></article>
+      <article class="why-card reveal" data-delay="3"><svg class="wc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-8.5 8.5 8.5 8.5 0 01-3.6-.8L3 21l1.8-5.9A8.5 8.5 0 1121 11.5z"/><path d="M9 11h.01M12 11h.01M15 11h.01"/></svg><h3>Expression</h3><p>Music gives feelings a language. For many students, it becomes the place they're most themselves.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 · WHY FAMILIES CHOOSE MUZHOUSE ============ -->
+<section class="bg-cream" id="why-us" aria-labelledby="whyus-h">
+  <div class="wrap">
+    <div class="sec-head reveal"><p class="kicker">The MuzHouse Difference</p><h2 class="h2" id="whyus-h">Why families <em>choose</em> us</h2><p class="lede" style="margin-top:1.1rem">Most music schools ask you to travel. We come to you — and design everything else around real family life.</p></div>
+    <div class="ben-grid">
+      <div class="ben reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg><h3>We come to you</h3><p>Lessons at your kitchen piano or living room. No driving, no waiting rooms, no lost evenings.</p></div>
+      <div class="ben reveal" data-delay="1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg><h3>Online or in person</h3><p>In-home, at our studios, or online worldwide — switch any week as life changes.</p></div>
+      <div class="ben reveal" data-delay="2"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 15h2m4 0h2"/></svg><h3>Flexible scheduling</h3><p>Mornings, evenings, weekends. We work around school, sports, and busy seasons.</p></div>
+      <div class="ben reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5L12 21l-5-2.8 1-5.5-4-3.9 5.5-.8z"/></svg><h3>Experienced teachers</h3><p>Conservatory-trained, gigging musicians who love teaching beginners and pros alike.</p></div>
+      <div class="ben reveal" data-delay="1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v10"/><circle cx="12" cy="16" r="3"/><path d="M19 5a4 4 0 01-4 4M5 5a4 4 0 004 4"/></svg><h3>Performance opportunities</h3><p>Recitals, live shows, and recording sessions give students a real reason — and a real stage.</p></div>
+      <div class="ben reveal" data-delay="2"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><h3>Personalized instruction</h3><p>One teacher, one plan, one student. Lessons built around their goals — not a fixed curriculum.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 · MEET MARKO & LIUBA ============ -->
+<section class="bg-cream2" id="about" aria-labelledby="about-h">
+  <div class="wrap pin-grid">
+    <div class="pin-media"><img src="images/duo-playing.jpg" data-parallax="0.05" alt="Marko playing guitar while Liuba plays violin in a sunlit field" /><span class="tag">Marko &amp; Liuba · Founders</span></div>
+    <div class="pin-steps">
+      <p class="kicker">The people behind MuzHouse</p>
+      <h2 class="h2" id="about-h" style="margin:8px 0 4px">Meet Marko &amp; <em>Liuba</em></h2>
+      <div class="pin-phrase reveal"><div class="big" data-phrase>We teach with heart.</div><p>Marko and Liuba started MuzHouse with one belief: a great teacher in your living room changes everything. He's a guitarist and producer; she's a classically trained violinist.</p></div>
+      <div class="pin-phrase reveal"><div class="big" data-phrase>We teach with purpose.</div><p>Every student gets a plan with a destination — a recital, a song they've always wanted to play, an audition. Progress you can hear.</p></div>
+      <div class="pin-phrase reveal"><div class="big" data-phrase>We teach with experience.</div><p>Between them: conservatory training, worship and jazz stages, studio sessions, and years of patient work with first-time beginners.</p></div>
+      <div class="pin-phrase reveal"><div class="big" data-phrase>We teach with passion.</div><p>This isn't a franchise. It's two musicians who built the music school they wished they'd had — and bring it to your door.</p><div style="margin-top:24px"><a href="#book" class="btn btn-primary">Start with a lesson</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 · HOW IT WORKS ============ -->
+<section class="bg-cream" id="how" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="sec-head reveal"><p class="kicker">How It Works</p><h2 class="h2" id="how-h">Four steps to your <em>first song</em></h2></div>
+    <div class="steps">
+      <div class="step reveal"><svg class="step-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="18" r="3"/><path d="M10 18V5l9-2v11"/><circle cx="16" cy="14" r="3"/></svg><h3>Choose your instrument</h3><p>Tell us what your child dreams of playing — or let us help you pick the right fit.</p></div>
+      <div class="step reveal" data-delay="1"><svg class="step-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><h3>Meet your teacher</h3><p>We match you with the right instructor for age, goals, and personality.</p></div>
+      <div class="step reveal" data-delay="2"><svg class="step-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9 15l2 2 4-4"/></svg><h3>Schedule your lessons</h3><p>Pick your time and place — home, studio, or online. We handle the rest.</p></div>
+      <div class="step reveal" data-delay="3"><svg class="step-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5L12 16l-5 2.7 1-5.5-4-3.9 5.5-.8z"/></svg><h3>Perform &amp; grow</h3><p>Build toward recitals, recordings, and real moments on stage.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 · INSTRUMENTS ============ -->
+<section class="bg-cream2" id="instruments" aria-labelledby="inst-h">
+  <div class="wrap">
+    <div class="sec-head center reveal"><p class="kicker">What We Teach</p><h2 class="h2" id="inst-h">We Come To Your Home<br>For The <em>Lessons</em></h2></div>
+    <div class="inst-grid">
+      <article class="inst-card"><div class="ph"><img src="images/card-guitar.jpg" alt="Guitar lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Guitar</h3></span><a href="#book" class="arw" aria-label="Book guitar lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+      <article class="inst-card"><div class="ph"><img src="images/card-violin.jpg" alt="Violin lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Violin</h3></span><a href="#book" class="arw" aria-label="Book violin lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+      <article class="inst-card"><div class="ph"><img src="images/card-piano.jpg" alt="Piano lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Piano</h3></span><a href="#book" class="arw" aria-label="Book piano lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+      <article class="inst-card"><div class="ph"><img src="images/card-voice.jpg" alt="Voice lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Voice</h3></span><a href="#book" class="arw" aria-label="Book voice lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+      <article class="inst-card"><div class="ph"><img src="images/card-drums.jpg" alt="Drums lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Drums</h3></span><a href="#book" class="arw" aria-label="Book drums lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+      <article class="inst-card"><div class="ph"><img src="images/card-bass-guitar.jpg" alt="Bass guitar lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Bass Guitar</h3></span><a href="#book" class="arw" aria-label="Book bass guitar lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+      <article class="inst-card"><div class="ph"><img src="images/card-saxophone.jpg" alt="Saxophone lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Saxophone</h3></span><a href="#book" class="arw" aria-label="Book saxophone lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+      <article class="inst-card"><div class="ph"><img src="images/perf-3.jpg" alt="Cello lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Cello</h3></span><a href="#book" class="arw" aria-label="Book cello lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+      <article class="inst-card"><div class="ph"><img src="images/cta-final.jpg" alt="Trumpet lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Trumpet</h3></span><a href="#book" class="arw" aria-label="Book trumpet lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+      <article class="inst-card"><div class="ph"><img src="images/perf-2.jpg" alt="Music production lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Production</h3></span><a href="#book" class="arw" aria-label="Book music production lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+      <article class="inst-card"><div class="ph"><img src="images/instruments.jpg" alt="Music theory and ear training"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Theory</h3></span><a href="#book" class="arw" aria-label="Book music theory lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+      <article class="inst-card"><div class="ph"><img src="images/card-band.jpg" alt="Band coaching"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Band</h3></span><a href="#book" class="arw" aria-label="Book band coaching"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 · TEACHERS ============ -->
+<section class="bg-cream" id="teachers" aria-labelledby="teach-h">
+  <div class="wrap">
+    <div class="sec-head reveal"><p class="kicker">Your Teachers</p><h2 class="h2" id="teach-h">Musicians who <em>love</em> to teach</h2><p class="lede" style="margin-top:1.1rem">Every MuzHouse teacher is a working musician and a patient mentor. Choose the one that fits your family.</p></div>
+    <div class="teach-grid">
+      <article class="teacher reveal"><div class="ph"><img src="images/teacher-liuba.jpg" alt="Liuba, violin and viola instructor at MuzHouse"></div><div class="body"><p class="spec">Violin · Viola · Piano</p><h3>Liuba</h3><p>Classically trained violinist with a gift for beginners. Warm, structured, endlessly patient — students leave every lesson sounding better.</p><a href="#book" class="choose">Choose Liuba <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+      <article class="teacher reveal" data-delay="1"><div class="ph"><img src="images/teacher-marko.jpg" alt="Marko, guitar and music production instructor at MuzHouse"></div><div class="body"><p class="spec">Guitar · Bass · Production</p><h3>Marko</h3><p>Guitarist and producer who makes music feel fun from day one. Rock, pop, worship and beyond — plus recording and songwriting.</p><a href="#book" class="choose">Choose Marko <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+      <article class="teacher reveal" data-delay="2"><div class="ph"><img src="images/perf-2.jpg" alt="The growing MuzHouse teaching team"></div><div class="body"><p class="spec">Voice · Piano · Strings · Winds</p><h3>The Team</h3><p>A growing roster of vetted instructors across voice, keys, strings, drums and horns — so we can match every student perfectly.</p><a href="#book" class="choose">Find my teacher <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8 · PERFORMANCES ============ -->
+<section class="bg-cream2" id="performances" aria-labelledby="perf-h">
+  <div class="wrap">
+    <div class="sec-head reveal"><p class="kicker">Student Success</p><h2 class="h2" id="perf-h">Where the <em>work</em> goes</h2><p class="lede" style="margin-top:1.1rem">Recitals, recording sessions, and the quiet leap from "I can't" to "listen to this." Real students. Real stages.</p></div>
+    <div class="gal reveal">
+      <figure class="g-a"><img src="images/cta-final.jpg" alt="Students performing live at a MuzHouse recital"><figcaption>Spring Recital · live on stage</figcaption></figure>
+      <figure class="g-b"><img src="images/perf-2.jpg" alt="A student recording in the studio"><figcaption>First studio session</figcaption></figure>
+      <figure class="g-c"><img src="images/perf-1.jpg" alt="A young student mid-performance"><figcaption>Competition prep</figcaption></figure>
+      <figure class="g-d"><img src="images/duo-playing.jpg" alt="Student and teacher playing together"><figcaption>Lesson to limelight</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9 · TESTIMONIALS ============ -->
+<section class="bg-cream" id="reviews" aria-labelledby="rev-h">
+  <div class="wrap">
+    <div class="sec-head center reveal"><p class="kicker">Loved by Sacramento families</p><h2 class="h2" id="rev-h">Trusted in living rooms<br>across the <em>region</em></h2></div>
+    <div class="quotes">
+      <figure class="quote reveal"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>"Having the teacher come to our home changed everything. No more rushing across town — and our daughter actually looks forward to practice now."</blockquote><figcaption class="who"><span class="av">RM</span><span><b>Rachel M.</b><small>Parent · Roseville</small></span></figcaption></figure>
+      <figure class="quote reveal" data-delay="1"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>"I started piano at 41, sure I was too late. Six months in, I played for my family at Christmas. MuzHouse made it feel possible."</blockquote><figcaption class="who"><span class="av">DK</span><span><b>David K.</b><small>Adult student · Folsom</small></span></figcaption></figure>
+      <figure class="quote reveal" data-delay="2"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>"As a homeschool family, the flexibility is everything. They worked with our charter funding and built lessons around our week. Worth every cent."</blockquote><figcaption class="who"><span class="av">JT</span><span><b>Jenna T.</b><small>Homeschool parent · Granite Bay</small></span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 · PRICING ============ -->
+<section class="bg-cream2" id="pricing" aria-labelledby="price-h">
+  <div class="wrap">
+    <div class="sec-head reveal"><p class="kicker">Simple, Honest Pricing</p><h2 class="h2" id="price-h">One rate. No <em>surprises</em>.</h2></div>
+    <div class="price-grid">
+      <div class="price-card reveal">
+        <span class="tag">Private Lessons</span>
+        <div class="amt">$60<span> / lesson</span></div>
+        <p class="per">Weekly 30, 45, or 60-minute lessons — in your home, online, or at our studios.</p>
+        <a href="#book" class="btn btn-primary">Book a Lesson</a>
+      </div>
+      <ul class="price-list reveal" data-delay="1">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg><span><b>We come to your home</b><span>In-home travel across Greater Sacramento is included — no extra fee.</span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span><b>Flexible scheduling</b><span>Choose a recurring weekly time; reschedule with notice.</span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8"/></svg><span><b>Online available</b><span>Same teacher, same rate — anywhere in the world.</span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg><span><b>No hidden pricing</b><span>No registration fees, no contracts. Secure payment through the website.</span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5L12 16l-5 2.7 1-5.5-4-3.9 5.5-.8z"/></svg><span><b>Charter &amp; homeschool friendly</b><span>We work with charter enrichment funding and provide invoicing.</span></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 · SERVICE AREAS ============ -->
+<section class="bg-cream" id="areas" aria-labelledby="area-h">
+  <div class="wrap">
+    <div class="sec-head reveal"><p class="kicker">Where We Teach</p><h2 class="h2" id="area-h">We come to your <em>neighborhood</em></h2><p class="lede" style="margin-top:1.1rem">In-home and studio lessons across Greater Sacramento — and online, anywhere in the world.</p></div>
+    <div class="area-grid">
+      <div class="area-list reveal" id="areaList">
+        <div class="area-item" data-area="sacramento"><span class="dot"></span><span>Sacramento</span></div>
+        <div class="area-item" data-area="roseville"><span class="dot"></span><span>Roseville</span></div>
+        <div class="area-item" data-area="rocklin"><span class="dot"></span><span>Rocklin</span></div>
+        <div class="area-item" data-area="folsom"><span class="dot"></span><span>Folsom</span></div>
+        <div class="area-item" data-area="granitebay"><span class="dot"></span><span>Granite Bay</span></div>
+        <div class="area-item" data-area="loomis"><span class="dot"></span><span>Loomis</span></div>
+        <div class="area-item" data-area="lincoln"><span class="dot"></span><span>Lincoln</span></div>
+        <div class="area-item" data-area="fairoaks"><span class="dot"></span><span>Fair Oaks</span></div>
+        <div class="area-item" data-area="citrusheights"><span class="dot"></span><span>Citrus Heights</span></div>
+        <div class="area-item" data-area="elkgrove"><span class="dot"></span><span>Elk Grove</span></div>
+        <div class="area-item" style="border-bottom:0"><span class="dot" style="background:var(--espresso)"></span><span><b>Online — worldwide</b></span></div>
+      </div>
+      <div class="map-wrap reveal" data-delay="1" role="img" aria-label="Map of MuzHouse service areas across Greater Sacramento">
+        <svg viewBox="0 0 600 450" id="areaMap">
+          <path d="M40 250 Q120 200 200 240 T380 220 T560 260 L560 450 L40 450 Z" fill="#E5D2BD" opacity=".6"/>
+          <path d="M0 300 Q150 270 300 300 T600 310" fill="none" stroke="#C9B79E" stroke-width="2" opacity=".7"/>
+          <g class="map-dot" data-area="sacramento"><circle class="halo" cx="250" cy="300" r="10"/><circle class="core" cx="250" cy="300" r="8"/><text x="250" y="324" text-anchor="middle">Sacramento</text></g>
+          <g class="map-dot" data-area="roseville"><circle class="halo" cx="360" cy="210" r="10"/><circle class="core" cx="360" cy="210" r="7"/><text x="360" y="196" text-anchor="middle">Roseville</text></g>
+          <g class="map-dot" data-area="rocklin"><circle class="halo" cx="395" cy="165" r="10"/><circle class="core" cx="395" cy="165" r="7"/><text x="395" y="151" text-anchor="middle">Rocklin</text></g>
+          <g class="map-dot" data-area="folsom"><circle class="halo" cx="430" cy="290" r="10"/><circle class="core" cx="430" cy="290" r="7"/><text x="430" y="313" text-anchor="middle">Folsom</text></g>
+          <g class="map-dot" data-area="granitebay"><circle class="halo" cx="430" cy="225" r="10"/><circle class="core" cx="430" cy="225" r="7"/><text x="448" y="221">Granite Bay</text></g>
+          <g class="map-dot" data-area="loomis"><circle class="halo" cx="448" cy="180" r="10"/><circle class="core" cx="448" cy="180" r="6"/><text x="464" y="178">Loomis</text></g>
+          <g class="map-dot" data-area="lincoln"><circle class="halo" cx="405" cy="110" r="10"/><circle class="core" cx="405" cy="110" r="6"/><text x="405" y="96" text-anchor="middle">Lincoln</text></g>
+          <g class="map-dot" data-area="fairoaks"><circle class="halo" cx="360" cy="288" r="10"/><circle class="core" cx="360" cy="288" r="6"/><text x="360" y="278" text-anchor="middle">Fair Oaks</text></g>
+          <g class="map-dot" data-area="citrusheights"><circle class="halo" cx="335" cy="250" r="10"/><circle class="core" cx="335" cy="250" r="6"/><text x="335" y="240" text-anchor="middle">Citrus Hts</text></g>
+          <g class="map-dot" data-area="elkgrove"><circle class="halo" cx="235" cy="380" r="10"/><circle class="core" cx="235" cy="380" r="7"/><text x="235" y="403" text-anchor="middle">Elk Grove</text></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12 · FAQ ============ -->
+<section class="bg-cream2" id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <div class="sec-head center reveal"><p class="kicker">Good questions</p><h2 class="h2" id="faq-h">Everything you're <em>wondering</em></h2></div>
+    <div class="faq reveal">
+      <details><summary>Where do you travel for in-home lessons?<span class="pm"></span></summary><div class="ans"><p>We teach in-home across Sacramento, Roseville, Rocklin, Folsom, Granite Bay, Loomis, Lincoln, Fair Oaks, Citrus Heights, and Elk Grove. Outside that radius, online lessons are available worldwide with the same teachers.</p></div></details>
+      <details><summary>How much do lessons cost?<span class="pm"></span></summary><div class="ans"><p>Private lessons are <b>$60 per lesson</b> — and that includes us coming to your home. No registration fees, no hidden pricing, no long-term contracts. Online and studio lessons are the same rate.</p></div></details>
+      <details><summary>How does scheduling work?<span class="pm"></span></summary><div class="ans"><p>You pick a recurring weekly time that fits your family — mornings, after school, evenings, or weekends. Need to move a lesson? Just let your teacher know in advance and we'll find another slot.</p></div></details>
+      <details><summary>Do you really teach online?<span class="pm"></span></summary><div class="ans"><p>Yes. Our online lessons are structured, camera-ready, and just as personal as in-home — ideal for busy weeks, travel, or families outside our driving radius.</p></div></details>
+      <details><summary>Do you work with charter &amp; homeschool families?<span class="pm"></span></summary><div class="ans"><p>Absolutely — charter and homeschool families are a big part of MuzHouse. We're familiar with charter enrichment funding and can provide the documentation and invoicing your program needs.</p></div></details>
+      <details><summary>What does a typical lesson look like?<span class="pm"></span></summary><div class="ans"><p>Most students take a weekly 30, 45, or 60-minute lesson. Each is one-on-one and built around your goals — technique, repertoire, theory, and creativity — with regular recitals and recording opportunities.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 13 · FINAL CTA ============ -->
+<section class="final" aria-labelledby="final-h">
+  <div class="final-media"><img src="images/cta-final.jpg" data-parallax="0.06" alt="A MuzHouse student performing at golden hour" /></div>
+  <div class="wrap">
+    <p class="kicker reveal" style="color:rgba(253,246,234,.8)">Your first lesson is closer than you think</p>
+    <h2 class="reveal" data-delay="1" id="final-h">Ready to start your <em>musical journey?</em></h2>
+    <p class="lede reveal" data-delay="2">Tell us about your musician. We'll match a teacher, find a time, and bring the music to your door.</p>
+    <div class="reveal" data-delay="3"><a href="#book" class="btn btn-primary" style="background:var(--cream);color:var(--espresso);border-color:var(--cream)">Book a Lesson</a></div>
+  </div>
+</section>
+
+<!-- ============ 14 · BOOK / CONTACT ============ -->
+<section class="bg-cream" id="book" aria-labelledby="book-h">
+  <div class="wrap book-grid">
+    <div class="book-info reveal">
+      <p class="kicker">Book a Lesson</p>
+      <h2 class="h2" id="book-h" style="margin:.3rem 0 0">Let's get <em>started</em></h2>
+      <p class="lede" style="margin-top:1rem">Send us a note and we'll be in touch within one business day to schedule your first lesson. Lessons are <b>$60</b>, and payment is handled securely online.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg><span><b>Call or text</b><span>(916) 555-0142</span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg><span><b>Email</b><span>hello@muzhouse.us</span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg><span><b>Instagram</b><span>@muzhouse</span></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span><b>Service area</b><span>Greater Sacramento &amp; online worldwide</span></span></li>
+      </ul>
+    </div>
+    <form class="form reveal" data-delay="1" id="bookForm" novalidate>
+      <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required placeholder="Your name"></div>
+      <div class="row2">
+        <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" required placeholder="(916) 000-0000"></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required placeholder="you@email.com"></div>
+      </div>
+      <div class="field"><label for="f-instrument">Interested in</label>
+        <select id="f-instrument" name="instrument"><option>Voice</option><option>Piano</option><option>Guitar</option><option>Violin</option><option>Cello</option><option>Saxophone</option><option>Trumpet</option><option>Bass Guitar</option><option>Drums</option><option>Music Production</option><option>Music Theory / Ear Training</option><option>Band Coaching</option><option>Not sure yet — help me choose</option></select>
+      </div>
+      <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="message" placeholder="Who's learning, their age, and what you're hoping for…"></textarea></div>
+      <button type="submit" class="btn btn-primary">Book a Lesson</button>
+      <p class="note">We reply within one business day. No spam, ever.</p>
+      <div class="form-ok" id="formOk"><div class="check"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3 style="font-size:1.7rem">Thank you!</h3><p style="margin:.4rem 0 0;color:var(--cocoa)">We've got it — we'll reach out within one business day to book your first lesson.</p></div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer aria-label="Site footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#top" class="brand"><i>Muz</i>House</a>
+        <p class="tag">A modern music school that comes to you — in your home, online, or at our studios across Greater Sacramento.</p>
+      </div>
+      <div><h4>Lessons</h4><ul><li><a href="#instruments">Piano</a></li><li><a href="#instruments">Voice</a></li><li><a href="#instruments">Guitar</a></li><li><a href="#instruments">Violin</a></li><li><a href="#instruments">Drums &amp; more</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#about">About Us</a></li><li><a href="#teachers">Teachers</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#areas">Areas we serve</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div><h4>Get in touch</h4><ul><li><a href="tel:+19165550142">(916) 555-0142</a></li><li><a href="mailto:hello@muzhouse.us">hello@muzhouse.us</a></li><li><a href="#book">@muzhouse</a></li><li><a href="#book">Book a Lesson</a></li></ul></div>
+    </div>
+    <div class="foot-bot"><span>© 2026 MuzHouse · A Modern Music School That Comes To You</span><span>Private lessons $60 · Sacramento · Roseville · Rocklin · Folsom · Granite Bay</span></div>
+  </div>
+</footer>
+
+<!-- ============ SCHEMA ============ -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://muzhouse.us/#business","name":"MuzHouse","description":"A modern music school that comes to your home. In-home, online, and studio music lessons across Greater Sacramento.","slogan":"A modern music school that comes to your home","url":"https://muzhouse.us/","telephone":"+1-916-555-0142","email":"hello@muzhouse.us","priceRange":"$60 per lesson","image":"https://muzhouse.us/images/hero-arch.jpg","areaServed":["Sacramento CA","Roseville CA","Rocklin CA","Folsom CA","Granite Bay CA","Loomis CA","Lincoln CA","Fair Oaks CA","Citrus Heights CA","Elk Grove CA","Online Worldwide"],"address":{"@type":"PostalAddress","addressLocality":"Sacramento","addressRegion":"CA","addressCountry":"US"},"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"In-Home Music Lessons"},"price":"60","priceCurrency":"USD"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Online Music Lessons"},"price":"60","priceCurrency":"USD"}],"sameAs":["https://instagram.com/muzhouse"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where do you travel for in-home music lessons?","acceptedAnswer":{"@type":"Answer","text":"We teach in-home across Sacramento, Roseville, Rocklin, Folsom, Granite Bay, Loomis, Lincoln, Fair Oaks, Citrus Heights and Elk Grove. Online lessons are available worldwide."}},{"@type":"Question","name":"How much do music lessons cost?","acceptedAnswer":{"@type":"Answer","text":"Private lessons are $60 per lesson, including in-home travel. No registration or hidden fees."}},{"@type":"Question","name":"Do you offer online music lessons?","acceptedAnswer":{"@type":"Answer","text":"Yes. Online lessons are structured and personal, available worldwide."}},{"@type":"Question","name":"Do you work with charter and homeschool families?","acceptedAnswer":{"@type":"Answer","text":"Yes. We work with charter enrichment funding and homeschool families, and provide documentation and invoicing."}}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Liuba","jobTitle":"Violin & Viola Instructor","worksFor":{"@id":"https://muzhouse.us/#business"},"knowsAbout":["Violin","Viola","Piano","Classical Music"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Marko","jobTitle":"Guitar & Music Production Instructor","worksFor":{"@id":"https://muzhouse.us/#business"},"knowsAbout":["Guitar","Bass Guitar","Music Production","Songwriting"]}
+</script>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav=document.getElementById('nav');
+  var onScroll=function(){nav.classList.toggle('scrolled',window.scrollY>40);};
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+  var mb=document.getElementById('menuBtn');if(mb)mb.addEventListener('click',function(){location.hash='#book';});
+
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  } else {document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});}
+
+  document.querySelectorAll('[data-mask]').forEach(function(el){el.innerHTML='<span class="ln"><span>'+el.innerHTML+'</span></span>';el.classList.add('lines');});
+  if('IntersectionObserver' in window){
+    var mio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');mio.unobserve(e.target);}});},{threshold:.3});
+    document.querySelectorAll('.lines').forEach(function(el){mio.observe(el);});
+  } else {document.querySelectorAll('.lines').forEach(function(el){el.classList.add('in');});}
+
+  var phrases=document.querySelectorAll('.pin-phrase');
+  if(phrases.length&&'IntersectionObserver' in window){
+    var pio=new IntersectionObserver(function(es){es.forEach(function(e){var b=e.target.querySelector('[data-phrase]');if(b){b.style.transition='opacity .6s, transform .6s';if(e.isIntersecting){b.style.opacity=1;b.style.transform='none';}else{b.style.opacity=.28;b.style.transform='translateY(6px)';}}});},{threshold:.6});
+    phrases.forEach(function(p){var b=p.querySelector('[data-phrase]');if(b)b.style.opacity=.28;pio.observe(p);});
+  }
+
+  var I={piano:'<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 6v8M10 6v8M14 6v8M18 6v8"/>',voice:'<rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3M8 21h8"/>',guitar:'<path d="M20 4l-2-1-1 2"/><path d="M17 5l-6.5 6.5"/><circle cx="8" cy="14" r="4.5"/><circle cx="8" cy="14" r="1.2"/>',strings:'<path d="M16 3l5 5"/><path d="M18 5l-9 9"/><path d="M11 8.5l-4 4a3.2 3.2 0 104.5 4.5l4-4"/>',drum:'<ellipse cx="12" cy="7.5" rx="9" ry="3"/><path d="M3 7.5v6c0 1.7 4 3 9 3s9-1.3 9-3v-6"/><path d="M7 10.3L4 20M17 10.3L20 20"/>',horn:'<path d="M3 8v8h4l6 4V4l-6 4H3z"/><path d="M16 9a4 4 0 010 6"/>',note:'<circle cx="6" cy="18" r="3"/><path d="M9 18V4l11-2v12"/><circle cx="17" cy="14" r="3"/>'};
+  function pick(t){t=t.toLowerCase();
+    if(t.indexOf('piano')>-1||t.indexOf('theory')>-1)return I.piano;
+    if(t.indexOf('voice')>-1)return I.voice;
+    if(t.indexOf('bass')>-1||t.indexOf('guitar')>-1)return I.guitar;
+    if(t.indexOf('violin')>-1||t.indexOf('cello')>-1)return I.strings;
+    if(t.indexOf('drum')>-1)return I.drum;
+    if(t.indexOf('sax')>-1||t.indexOf('trumpet')>-1||t.indexOf('prod')>-1||t.indexOf('band')>-1)return I.horn;
+    return I.note;}
+  document.querySelectorAll('.inst-card').forEach(function(c){var h=c.querySelector('h3'),s=c.querySelector('.ico');if(h&&s)s.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">'+pick(h.textContent)+'</svg>';});
+  if('IntersectionObserver' in window){
+    var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var sibs=Array.prototype.slice.call(e.target.parentNode.children);var idx=sibs.indexOf(e.target);setTimeout(function(){e.target.classList.add('shown');},reduce?0:Math.min(idx,7)*55);cio.unobserve(e.target);}});},{threshold:.18});
+    document.querySelectorAll('.inst-card').forEach(function(c){cio.observe(c);});
+  } else {document.querySelectorAll('.inst-card').forEach(function(c){c.classList.add('shown');});}
+
+  var prog=document.getElementById('progress');
+  if(prog){var tk=false;function up(){var h=document.documentElement;var m=h.scrollHeight-h.clientHeight;prog.style.transform='scaleX('+(m>0?h.scrollTop/m:0)+')';tk=false;}window.addEventListener('scroll',function(){if(!tk){requestAnimationFrame(up);tk=true;}},{passive:true});up();}
+
+  if(!reduce){
+    var px=document.querySelectorAll('[data-parallax]');px.forEach(function(el){el.style.willChange='transform';});
+    var pt=false;function pUp(){var vh=window.innerHeight;px.forEach(function(el){var r=el.getBoundingClientRect();var off=(vh/2-(r.top+r.height/2))/vh;var sp=parseFloat(el.getAttribute('data-parallax'))||.05;var y=Math.max(-22,Math.min(22,off*vh*sp));el.style.transform='translate3d(0,'+y.toFixed(1)+'px,0) scale(1.1)';});pt=false;}
+    window.addEventListener('scroll',function(){if(!pt){requestAnimationFrame(pUp);pt=true;}},{passive:true});window.addEventListener('resize',pUp);pUp();
+  }
+
+  var items=document.querySelectorAll('.area-item[data-area]'),dots=document.querySelectorAll('.map-dot');
+  function hl(a,on){items.forEach(function(i){if(i.dataset.area===a)i.classList.toggle('active',on);});dots.forEach(function(d){if(d.dataset.area===a)d.classList.toggle('active',on);});}
+  items.forEach(function(i){i.addEventListener('mouseenter',function(){hl(i.dataset.area,true);});i.addEventListener('mouseleave',function(){hl(i.dataset.area,false);});});
+  dots.forEach(function(d){d.addEventListener('mouseenter',function(){hl(d.dataset.area,true);});d.addEventListener('mouseleave',function(){hl(d.dataset.area,false);});});
+  var areaSec=document.getElementById('areas');
+  if(areaSec&&'IntersectionObserver' in window){var aio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){Array.prototype.slice.call(dots).forEach(function(d,idx){setTimeout(function(){d.classList.add('active');setTimeout(function(){d.classList.remove('active');},700);},idx*160);});aio.unobserve(e.target);}});},{threshold:.3});aio.observe(areaSec);}
+
+  var form=document.getElementById('bookForm');
+  if(form){form.addEventListener('submit',function(ev){ev.preventDefault();var n=form.querySelector('#f-name'),e=form.querySelector('#f-email'),p=form.querySelector('#f-phone'),ok=true;[n,e,p].forEach(function(f){if(!f.value.trim()){f.style.borderColor='var(--mocha)';ok=false;}else{f.style.borderColor='';}});if(!ok)return;form.querySelectorAll('.field, button[type=submit], .note').forEach(function(el){el.style.display='none';});document.getElementById('formOk').classList.add('show');});}
+})();
+</script>
+</body>
+</html>
