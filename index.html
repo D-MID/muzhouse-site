@@ -700,14 +700,27 @@ footer .tag{margin:16px 0 0;max-width:30ch;font-size:.9rem;line-height:1.6}
     phrases.forEach(function(p){var b=p.querySelector('[data-phrase]');if(b)b.style.opacity=.28;pio.observe(p);});
   }
 
-  var I={piano:'<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 6v8M10 6v8M14 6v8M18 6v8"/>',voice:'<rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3M8 21h8"/>',guitar:'<path d="M20 4l-2-1-1 2"/><path d="M17 5l-6.5 6.5"/><circle cx="8" cy="14" r="4.5"/><circle cx="8" cy="14" r="1.2"/>',strings:'<path d="M16 3l5 5"/><path d="M18 5l-9 9"/><path d="M11 8.5l-4 4a3.2 3.2 0 104.5 4.5l4-4"/>',drum:'<ellipse cx="12" cy="7.5" rx="9" ry="3"/><path d="M3 7.5v6c0 1.7 4 3 9 3s9-1.3 9-3v-6"/><path d="M7 10.3L4 20M17 10.3L20 20"/>',horn:'<path d="M3 8v8h4l6 4V4l-6 4H3z"/><path d="M16 9a4 4 0 010 6"/>',note:'<circle cx="6" cy="18" r="3"/><path d="M9 18V4l11-2v12"/><circle cx="17" cy="14" r="3"/>'};
+  var I={
+    piano:'<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 6v8M10 6v8M14 6v8M18 6v8"/>',
+    voice:'<rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3M8 21h8"/>',
+    guitar:'<path d="M20 4l-2-1-1 2"/><path d="M17 5l-6.5 6.5"/><circle cx="8" cy="14" r="4.5"/><circle cx="8" cy="14" r="1.2"/>',
+    strings:'<path d="M16 3l5 5"/><path d="M18 5l-9 9"/><path d="M11 8.5l-4 4a3.2 3.2 0 104.5 4.5l4-4"/>',
+    drum:'<ellipse cx="12" cy="7.5" rx="9" ry="3"/><path d="M3 7.5v6c0 1.7 4 3 9 3s9-1.3 9-3v-6"/><path d="M7 10.3L4 20M17 10.3L20 20"/>',
+    horn:'<path d="M3 10.5h11l6-3v9l-6-3H3z"/><path d="M7 7.9v2.6M10 7.4v3.1M13 7.9v2.6"/>',
+    sliders:'<path d="M5 4v16M12 4v16M19 4v16"/><circle cx="5" cy="9" r="2"/><circle cx="12" cy="15" r="2"/><circle cx="19" cy="7" r="2"/>',
+    band:'<circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M2.5 20c0-3.2 2.5-5.5 5.5-5.5s5.5 2.3 5.5 5.5"/><path d="M15 14.7c2.5.2 4.5 2.3 4.5 5.3"/>',
+    note:'<circle cx="6" cy="18" r="3"/><path d="M9 18V4l11-2v12"/><circle cx="17" cy="14" r="3"/>'
+  };
   function pick(t){t=t.toLowerCase();
-    if(t.indexOf('piano')>-1||t.indexOf('theory')>-1)return I.piano;
+    if(t.indexOf('piano')>-1)return I.piano;
     if(t.indexOf('voice')>-1)return I.voice;
     if(t.indexOf('bass')>-1||t.indexOf('guitar')>-1)return I.guitar;
     if(t.indexOf('violin')>-1||t.indexOf('cello')>-1)return I.strings;
     if(t.indexOf('drum')>-1)return I.drum;
-    if(t.indexOf('sax')>-1||t.indexOf('trumpet')>-1||t.indexOf('prod')>-1||t.indexOf('band')>-1)return I.horn;
+    if(t.indexOf('sax')>-1||t.indexOf('trumpet')>-1)return I.horn;
+    if(t.indexOf('prod')>-1)return I.sliders;
+    if(t.indexOf('band')>-1)return I.band;
+    if(t.indexOf('theory')>-1)return I.note;
     return I.note;}
   document.querySelectorAll('.inst-card').forEach(function(c){var h=c.querySelector('h3'),s=c.querySelector('.ico');if(h&&s)s.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">'+pick(h.textContent)+'</svg>';});
   if('IntersectionObserver' in window){
@@ -732,25 +745,36 @@ footer .tag{margin:16px 0 0;max-width:30ch;font-size:.9rem;line-height:1.6}
   if(areaSec&&'IntersectionObserver' in window){var aio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){Array.prototype.slice.call(dots).forEach(function(d,idx){setTimeout(function(){d.classList.add('active');setTimeout(function(){d.classList.remove('active');},700);},idx*160);});aio.unobserve(e.target);}});},{threshold:.3});aio.observe(areaSec);}
 
   var form=document.getElementById('bookForm');
-  if(form){form.addEventListener('submit',function(ev){ev.preventDefault();
-    var g=function(id){var el=form.querySelector(id);return el&&el.value?el.value.trim():'';};
-    var n=form.querySelector('#f-name'),e=form.querySelector('#f-email'),p=form.querySelector('#f-phone'),ok=true;
-    [n,e,p].forEach(function(f){if(!f.value.trim()){f.style.borderColor='var(--mocha)';ok=false;}else{f.style.borderColor='';}});
-    if(!ok)return;
-    var body='New lesson booking request from muzehouse.us\n\n'
-      +'Name: '+g('#f-name')+'\n'
-      +'Phone: '+g('#f-phone')+'\n'
-      +'Email: '+g('#f-email')+'\n'
-      +'Student age: '+g('#f-age')+'\n'
-      +'Instrument: '+g('#f-instrument')+'\n'
-      +'Lesson type: '+g('#f-type')+'\n'
-      +'City: '+g('#f-city')+'\n\n'
-      +'Message:\n'+(g('#f-msg')||'(none)');
-    var mailto='mailto:mshvejk@gmail.com?subject='+encodeURIComponent('Lesson booking — '+g('#f-name'))+'&body='+encodeURIComponent(body);
-    window.location.href=mailto;
-    form.querySelectorAll('.field, button[type=submit], .note').forEach(function(el){el.style.display='none';});
-    document.getElementById('formOk').classList.add('show');
-  });}
+  if(form){
+    /* ===== EMAIL DELIVERY =====
+       Paste your free Web3Forms access key below to receive submissions at mshvejk@gmail.com.
+       Get one in 30s at https://web3forms.com (enter your email, copy the access key).
+       Until a key is set, the form falls back to opening the visitor's email app. */
+    var WEB3FORMS_KEY = "";
+    var okBox=document.getElementById('formOk');
+    function reveal(h,m){form.querySelectorAll('.field, button[type=submit], .note').forEach(function(el){el.style.display='none';});var H=okBox.querySelector('h3'),P=okBox.querySelector('p');if(H)H.textContent=h;if(P)P.innerHTML=m;okBox.classList.add('show');}
+    form.addEventListener('submit',function(ev){ev.preventDefault();
+      var g=function(id){var el=form.querySelector(id);return el&&el.value?el.value.trim():'';};
+      var n=form.querySelector('#f-name'),e=form.querySelector('#f-email'),p=form.querySelector('#f-phone'),ok=true;
+      [n,e,p].forEach(function(f){if(!f.value.trim()){f.style.borderColor='var(--mocha)';ok=false;}else{f.style.borderColor='';}});
+      if(!ok)return;
+      var fields={Name:g('#f-name'),Phone:g('#f-phone'),Email:g('#f-email'),'Student age':g('#f-age'),Instrument:g('#f-instrument'),'Lesson type':g('#f-type'),City:g('#f-city'),Message:g('#f-msg')||'(none)'};
+      var phone='<a href="tel:+12792145427" style="color:var(--espresso);font-weight:600">279-214-5427</a>';
+      function mailtoFallback(){
+        var body='New lesson booking request from muzehouse.us\n\n'+Object.keys(fields).map(function(k){return k+': '+fields[k];}).join('\n');
+        window.location.href='mailto:mshvejk@gmail.com?subject='+encodeURIComponent('Lesson booking — '+fields.Name)+'&body='+encodeURIComponent(body);
+        reveal('Almost there!','Your email app just opened — press <b>send</b> and we’ll reply within one business day. Prefer to talk? Call or text '+phone+'.');
+      }
+      if(WEB3FORMS_KEY){
+        var btn=form.querySelector('button[type=submit]');if(btn){btn.textContent='Sending…';}
+        var payload=Object.assign({access_key:WEB3FORMS_KEY,subject:'New lesson booking — '+fields.Name,from_name:'MuzHouse Website'},fields);
+        fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)})
+          .then(function(r){return r.json();})
+          .then(function(j){if(j&&j.success){reveal('Thank you!','We’ve received your request and will reply within one business day. Prefer to talk? Call or text '+phone+'.');}else{mailtoFallback();}})
+          .catch(mailtoFallback);
+      } else { mailtoFallback(); }
+    });
+  }
 })();
 </script>
 </body>
