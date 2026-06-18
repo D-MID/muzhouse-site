@@ -65,6 +65,16 @@ section{padding-block:clamp(78px,11vw,160px);position:relative}
 
 /* Progress + nav */
 .progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:100;transform:scaleX(0);transform-origin:0 50%;background:var(--espresso);will-change:transform}
+.sticky-cta{display:none}
+@media(max-width:820px){
+  .sticky-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:85;gap:10px;align-items:center;
+    padding:10px 14px;padding-bottom:calc(10px + env(safe-area-inset-bottom));
+    background:rgba(253,246,234,.94);backdrop-filter:saturate(140%) blur(12px);border-top:1px solid var(--line);box-shadow:0 -6px 24px -16px rgba(60,54,47,.5)}
+  .sticky-cta .s-book{flex:1;justify-content:center;padding:.95em 1em;font-size:.95rem}
+  .sticky-cta .s-call{flex:0 0 auto;width:50px;height:48px;padding:0;display:grid;place-items:center}
+  .sticky-cta .s-call svg{width:20px;height:20px}
+  footer{padding-bottom:100px}
+}
 .nav{position:fixed;inset:0 0 auto 0;z-index:90;transition:background .4s,box-shadow .4s,padding .4s;padding-block:20px}
 .nav.scrolled{background:rgba(253,246,234,.9);backdrop-filter:saturate(140%) blur(12px);box-shadow:0 1px 0 var(--line);padding-block:12px}
 .nav-row{display:flex;align-items:center;justify-content:space-between;gap:24px}
@@ -172,20 +182,19 @@ html.js .lines .ln > span{transform:translateY(110%)}
 .step p{font-size:.93rem;color:var(--cocoa);margin:0}
 
 /* ---------- INSTRUMENTS (Figma cards) ---------- */
-.inst-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,1.6vw,24px)}
-.inst-card{position:relative;background:var(--sand);border-radius:var(--r);padding:14px 14px 18px;opacity:1;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.inst-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.6vw,22px)}
+.inst-card{position:relative;background:var(--sand);border-radius:var(--r);padding:30px 24px 22px;min-height:172px;
+  display:flex;flex-direction:column;justify-content:space-between;opacity:1;transition:transform .5s var(--ease),box-shadow .5s var(--ease),background .4s}
 html.js .inst-card{opacity:0;transform:translateY(26px)}
 html.js .inst-card.shown{opacity:1;transform:none}
-.inst-card:hover{transform:translateY(-6px);box-shadow:0 26px 48px -28px rgba(60,54,47,.45)}
-.inst-card .ph{border-radius:12px;overflow:hidden;aspect-ratio:282/220}
-.inst-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
-.inst-card:hover .ph img{transform:scale(1.06)}
-.inst-card .meta{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 6px 2px}
-.inst-card .lbl{display:flex;align-items:center;gap:9px;min-width:0}
-.inst-card .ico{width:21px;height:21px;color:var(--espresso);flex:none;stroke-width:1.5}
-.inst-card h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--espresso);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.inst-card .arw{flex:none;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--espresso);display:grid;place-items:center;color:var(--espresso);background:transparent;transition:.4s var(--ease)}
-.inst-card .arw svg{width:15px;height:15px;transition:transform .4s var(--ease)}
+.inst-card:hover{transform:translateY(-6px);box-shadow:0 26px 48px -28px rgba(60,54,47,.45);background:var(--sand-2)}
+.inst-card .ico{width:46px;height:46px;color:var(--espresso);display:block;transition:transform .5s var(--ease)}
+.inst-card:hover .ico{transform:translateY(-2px) scale(1.05)}
+.inst-card .ico svg{width:100%;height:100%;stroke-width:1.4}
+.inst-card .meta{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:24px}
+.inst-card h3{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;color:var(--espresso);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1}
+.inst-card .arw{flex:none;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--espresso);display:grid;place-items:center;color:var(--espresso);background:transparent;transition:.4s var(--ease)}
+.inst-card .arw svg{width:16px;height:16px;transition:transform .4s var(--ease)}
 .inst-card:hover .arw{background:var(--espresso);color:var(--cream)}
 .inst-card:hover .arw svg{transform:translate(1px,-1px)}
 
@@ -421,7 +430,7 @@ footer .tag{margin:16px 0 0;max-width:30ch;font-size:.9rem;line-height:1.6}
 <!-- ============ 4 · MEET MARKO & LIUBA ============ -->
 <section class="bg-cream2" id="about" aria-labelledby="about-h">
   <div class="wrap pin-grid">
-    <div class="pin-media"><img src="images/duo-playing.jpg" data-parallax="0.05" alt="Marko playing guitar while Liuba plays violin in a sunlit field" /><span class="tag">Marko &amp; Liuba · Founders</span></div>
+    <div class="pin-media"><img loading="lazy" src="images/duo-playing.jpg" data-parallax="0.05" alt="Marko playing guitar while Liuba plays violin in a sunlit field" /><span class="tag">Marko &amp; Liuba · Founders</span></div>
     <div class="pin-steps">
       <p class="kicker">The people behind MuzHouse</p>
       <h2 class="h2" id="about-h" style="margin:8px 0 4px">Meet Marko &amp; <em>Liuba</em></h2>
@@ -450,31 +459,18 @@ footer .tag{margin:16px 0 0;max-width:30ch;font-size:.9rem;line-height:1.6}
 <section class="bg-cream2" id="instruments" aria-labelledby="inst-h">
   <div class="wrap">
     <div class="sec-head center reveal"><p class="kicker">What We Teach</p><h2 class="h2" id="inst-h">We Come To Your Home<br>For The <em>Lessons</em></h2></div>
-    <div class="inst-grid">
-      <article class="inst-card"><div class="ph"><img src="images/card-guitar.jpg" alt="Guitar lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Guitar</h3></span><a href="#book" class="arw" aria-label="Book guitar lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
-      <article class="inst-card"><div class="ph"><img src="images/card-violin.jpg" alt="Violin lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Violin</h3></span><a href="#book" class="arw" aria-label="Book violin lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
-      <article class="inst-card"><div class="ph"><img src="images/card-piano.jpg" alt="Piano lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Piano</h3></span><a href="#book" class="arw" aria-label="Book piano lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
-      <article class="inst-card"><div class="ph"><img src="images/card-voice.jpg" alt="Voice lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Voice</h3></span><a href="#book" class="arw" aria-label="Book voice lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
-      <article class="inst-card"><div class="ph"><img src="images/card-drums.jpg" alt="Drums lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Drums</h3></span><a href="#book" class="arw" aria-label="Book drums lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
-      <article class="inst-card"><div class="ph"><img src="images/card-bass-guitar.jpg" alt="Bass guitar lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Bass Guitar</h3></span><a href="#book" class="arw" aria-label="Book bass guitar lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
-      <article class="inst-card"><div class="ph"><img src="images/card-saxophone.jpg" alt="Saxophone lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Saxophone</h3></span><a href="#book" class="arw" aria-label="Book saxophone lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
-      <article class="inst-card"><div class="ph"><img src="images/perf-3.jpg" alt="Cello lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Cello</h3></span><a href="#book" class="arw" aria-label="Book cello lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
-      <article class="inst-card"><div class="ph"><img src="images/cta-final.jpg" alt="Trumpet lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Trumpet</h3></span><a href="#book" class="arw" aria-label="Book trumpet lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
-      <article class="inst-card"><div class="ph"><img src="images/perf-2.jpg" alt="Music production lessons"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Production</h3></span><a href="#book" class="arw" aria-label="Book music production lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
-      <article class="inst-card"><div class="ph"><img src="images/instruments.jpg" alt="Music theory and ear training"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Theory</h3></span><a href="#book" class="arw" aria-label="Book music theory lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
-      <article class="inst-card"><div class="ph"><img src="images/card-band.jpg" alt="Band coaching"></div><div class="meta"><span class="lbl"><span class="ico"></span><h3>Band</h3></span><a href="#book" class="arw" aria-label="Book band coaching"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+    <div class="inst-grid"><article class="inst-card"><span class="ico" aria-hidden="true"></span><div class="meta"><h3>Guitar</h3><a href="#book" class="arw" aria-label="Book guitar lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article><article class="inst-card"><span class="ico" aria-hidden="true"></span><div class="meta"><h3>Violin</h3><a href="#book" class="arw" aria-label="Book violin lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article><article class="inst-card"><span class="ico" aria-hidden="true"></span><div class="meta"><h3>Piano</h3><a href="#book" class="arw" aria-label="Book piano lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article><article class="inst-card"><span class="ico" aria-hidden="true"></span><div class="meta"><h3>Voice</h3><a href="#book" class="arw" aria-label="Book voice lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article><article class="inst-card"><span class="ico" aria-hidden="true"></span><div class="meta"><h3>Drums</h3><a href="#book" class="arw" aria-label="Book drums lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article><article class="inst-card"><span class="ico" aria-hidden="true"></span><div class="meta"><h3>Bass Guitar</h3><a href="#book" class="arw" aria-label="Book bass guitar lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article><article class="inst-card"><span class="ico" aria-hidden="true"></span><div class="meta"><h3>Saxophone</h3><a href="#book" class="arw" aria-label="Book saxophone lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article><article class="inst-card"><span class="ico" aria-hidden="true"></span><div class="meta"><h3>Cello</h3><a href="#book" class="arw" aria-label="Book cello lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article><article class="inst-card"><span class="ico" aria-hidden="true"></span><div class="meta"><h3>Trumpet</h3><a href="#book" class="arw" aria-label="Book trumpet lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article><article class="inst-card"><span class="ico" aria-hidden="true"></span><div class="meta"><h3>Production</h3><a href="#book" class="arw" aria-label="Book production lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article><article class="inst-card"><span class="ico" aria-hidden="true"></span><div class="meta"><h3>Music Theory</h3><a href="#book" class="arw" aria-label="Book music theory lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article><article class="inst-card"><span class="ico" aria-hidden="true"></span><div class="meta"><h3>Band</h3><a href="#book" class="arw" aria-label="Book band lessons"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article></div>
     </div>
-  </div>
-</section>
+  </section>
 
 <!-- ============ 7 · TEACHERS ============ -->
 <section class="bg-cream" id="teachers" aria-labelledby="teach-h">
   <div class="wrap">
     <div class="sec-head reveal"><p class="kicker">Your Teachers</p><h2 class="h2" id="teach-h">Musicians who <em>love</em> to teach</h2><p class="lede" style="margin-top:1.1rem">Every MuzHouse teacher is a working musician and a patient mentor. Choose the one that fits your family.</p></div>
     <div class="teach-grid">
-      <article class="teacher reveal"><div class="ph"><img src="images/teacher-liuba.jpg" alt="Liuba, violin and viola instructor at MuzHouse"></div><div class="body"><p class="spec">Violin · Viola · Piano</p><h3>Liuba</h3><p>Classically trained violinist with a gift for beginners. Warm, structured, endlessly patient — students leave every lesson sounding better.</p><a href="#book" class="choose">Choose Liuba <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
-      <article class="teacher reveal" data-delay="1"><div class="ph"><img src="images/teacher-marko.jpg" alt="Marko, guitar and music production instructor at MuzHouse"></div><div class="body"><p class="spec">Guitar · Bass · Production</p><h3>Marko</h3><p>Guitarist and producer who makes music feel fun from day one. Rock, pop, worship and beyond — plus recording and songwriting.</p><a href="#book" class="choose">Choose Marko <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
-      <article class="teacher reveal" data-delay="2"><div class="ph"><img src="images/perf-2.jpg" alt="The growing MuzHouse teaching team"></div><div class="body"><p class="spec">Voice · Piano · Strings · Winds</p><h3>The Team</h3><p>A growing roster of vetted instructors across voice, keys, strings, drums and horns — so we can match every student perfectly.</p><a href="#book" class="choose">Find my teacher <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+      <article class="teacher reveal"><div class="ph"><img loading="lazy" src="images/teacher-liuba.jpg" alt="Liuba, violin and viola instructor at MuzHouse"></div><div class="body"><p class="spec">Violin · Viola · Piano</p><h3>Liuba</h3><p>Classically trained violinist with a gift for beginners. Warm, structured, endlessly patient — students leave every lesson sounding better.</p><a href="#book" class="choose">Choose Liuba <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+      <article class="teacher reveal" data-delay="1"><div class="ph"><img loading="lazy" src="images/teacher-marko.jpg" alt="Marko, guitar and music production instructor at MuzHouse"></div><div class="body"><p class="spec">Guitar · Bass · Production</p><h3>Marko</h3><p>Guitarist and producer who makes music feel fun from day one. Rock, pop, worship and beyond — plus recording and songwriting.</p><a href="#book" class="choose">Choose Marko <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
+      <article class="teacher reveal" data-delay="2"><div class="ph"><img loading="lazy" src="images/perf-2.jpg" alt="The growing MuzHouse teaching team"></div><div class="body"><p class="spec">Voice · Piano · Strings · Winds</p><h3>The Team</h3><p>A growing roster of vetted instructors across voice, keys, strings, drums and horns — so we can match every student perfectly.</p><a href="#book" class="choose">Find my teacher <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></article>
     </div>
   </div>
 </section>
@@ -484,10 +480,10 @@ footer .tag{margin:16px 0 0;max-width:30ch;font-size:.9rem;line-height:1.6}
   <div class="wrap">
     <div class="sec-head reveal"><p class="kicker">Student Success</p><h2 class="h2" id="perf-h">Where the <em>work</em> goes</h2><p class="lede" style="margin-top:1.1rem">Recitals, recording sessions, and the quiet leap from "I can't" to "listen to this." Real students. Real stages.</p></div>
     <div class="gal reveal">
-      <figure class="g-a"><img src="images/cta-final.jpg" alt="Students performing live at a MuzHouse recital"><figcaption>Spring Recital · live on stage</figcaption></figure>
-      <figure class="g-b"><img src="images/perf-2.jpg" alt="A student recording in the studio"><figcaption>First studio session</figcaption></figure>
-      <figure class="g-c"><img src="images/perf-1.jpg" alt="A young student mid-performance"><figcaption>Competition prep</figcaption></figure>
-      <figure class="g-d"><img src="images/duo-playing.jpg" alt="Student and teacher playing together"><figcaption>Lesson to limelight</figcaption></figure>
+      <figure class="g-a"><img loading="lazy" src="images/cta-final.jpg" alt="Students performing live at a MuzHouse recital"><figcaption>Spring Recital · live on stage</figcaption></figure>
+      <figure class="g-b"><img loading="lazy" src="images/perf-2.jpg" alt="A student recording in the studio"><figcaption>First studio session</figcaption></figure>
+      <figure class="g-c"><img loading="lazy" src="images/perf-1.jpg" alt="A young student mid-performance"><figcaption>Competition prep</figcaption></figure>
+      <figure class="g-d"><img loading="lazy" src="images/duo-playing.jpg" alt="Student and teacher playing together"><figcaption>Lesson to limelight</figcaption></figure>
     </div>
   </div>
 </section>
@@ -581,7 +577,7 @@ footer .tag{margin:16px 0 0;max-width:30ch;font-size:.9rem;line-height:1.6}
 
 <!-- ============ 13 · FINAL CTA ============ -->
 <section class="final" aria-labelledby="final-h">
-  <div class="final-media"><img src="images/cta-final.jpg" data-parallax="0.06" alt="A MuzHouse student performing at golden hour" /></div>
+  <div class="final-media"><img loading="lazy" src="images/cta-final.jpg" data-parallax="0.06" alt="A MuzHouse student performing at golden hour" /></div>
   <div class="wrap">
     <p class="kicker reveal" style="color:rgba(253,246,234,.8)">Your first lesson is closer than you think</p>
     <h2 class="reveal" data-delay="1" id="final-h">Ready to start your <em>musical journey?</em></h2>
@@ -610,16 +606,33 @@ footer .tag{margin:16px 0 0;max-width:30ch;font-size:.9rem;line-height:1.6}
         <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" required placeholder="(279) 000-0000"></div>
         <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required placeholder="you@email.com"></div>
       </div>
-      <div class="field"><label for="f-instrument">Interested in</label>
-        <select id="f-instrument" name="instrument"><option>Voice</option><option>Piano</option><option>Guitar</option><option>Violin</option><option>Cello</option><option>Saxophone</option><option>Trumpet</option><option>Bass Guitar</option><option>Drums</option><option>Music Production</option><option>Music Theory / Ear Training</option><option>Band Coaching</option><option>Not sure yet — help me choose</option></select>
+      <div class="row2">
+        <div class="field"><label for="f-instrument">Instrument</label>
+          <select id="f-instrument" name="instrument"><option>Voice</option><option>Piano</option><option>Guitar</option><option>Violin</option><option>Cello</option><option>Saxophone</option><option>Trumpet</option><option>Bass Guitar</option><option>Drums</option><option>Music Production</option><option>Music Theory / Ear Training</option><option>Band Coaching</option><option>Not sure yet</option></select>
+        </div>
+        <div class="field"><label for="f-age">Student age</label><input id="f-age" name="age" type="text" inputmode="numeric" placeholder="e.g. 8 — or 'adult'"></div>
       </div>
-      <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="message" placeholder="Who's learning, their age, and what you're hoping for…"></textarea></div>
+      <div class="row2">
+        <div class="field"><label for="f-type">Lesson type</label>
+          <select id="f-type" name="lesson_type"><option>In-home (we come to you)</option><option>At our studio</option><option>Online</option></select>
+        </div>
+        <div class="field"><label for="f-city">City</label>
+          <select id="f-city" name="city"><option>Sacramento</option><option>Roseville</option><option>Rocklin</option><option>Folsom</option><option>Granite Bay</option><option>Loomis</option><option>Lincoln</option><option>Fair Oaks</option><option>Citrus Heights</option><option>Elk Grove</option><option>Online / other</option></select>
+        </div>
+      </div>
+      <div class="field"><label for="f-msg">Message <span style="text-transform:none;letter-spacing:0;color:var(--mocha)">(optional)</span></label><textarea id="f-msg" name="message" placeholder="Anything else we should know — goals, schedule, experience…"></textarea></div>
       <button type="submit" class="btn btn-primary">Book a Lesson</button>
       <p class="note">We reply within one business day. No spam, ever.</p>
-      <div class="form-ok" id="formOk"><div class="check"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3 style="font-size:1.7rem">Thank you!</h3><p style="margin:.4rem 0 0;color:var(--cocoa)">We've got it — we'll reach out within one business day to book your first lesson.</p></div>
+      <div class="form-ok" id="formOk"><div class="check"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3 style="font-size:1.7rem">Almost there!</h3><p style="margin:.4rem 0 0;color:var(--cocoa)">Your email app just opened with your request — press <b>send</b> and we'll reply within one business day. Prefer to talk? Call or text <a href="tel:+12792145427" style="color:var(--espresso);font-weight:600">279-214-5427</a>.</p></div>
     </form>
   </div>
 </section>
+
+<!-- ============ MOBILE STICKY CTA ============ -->
+<div class="sticky-cta" aria-label="Quick booking">
+  <a href="tel:+12792145427" class="btn btn-ghost s-call" aria-label="Call MuzHouse"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></a>
+  <a href="#book" class="btn btn-primary s-book">Book a Lesson</a>
+</div>
 
 <!-- ============ FOOTER ============ -->
 <footer aria-label="Site footer">
@@ -709,7 +722,25 @@ footer .tag{margin:16px 0 0;max-width:30ch;font-size:.9rem;line-height:1.6}
   if(areaSec&&'IntersectionObserver' in window){var aio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){Array.prototype.slice.call(dots).forEach(function(d,idx){setTimeout(function(){d.classList.add('active');setTimeout(function(){d.classList.remove('active');},700);},idx*160);});aio.unobserve(e.target);}});},{threshold:.3});aio.observe(areaSec);}
 
   var form=document.getElementById('bookForm');
-  if(form){form.addEventListener('submit',function(ev){ev.preventDefault();var n=form.querySelector('#f-name'),e=form.querySelector('#f-email'),p=form.querySelector('#f-phone'),ok=true;[n,e,p].forEach(function(f){if(!f.value.trim()){f.style.borderColor='var(--mocha)';ok=false;}else{f.style.borderColor='';}});if(!ok)return;form.querySelectorAll('.field, button[type=submit], .note').forEach(function(el){el.style.display='none';});document.getElementById('formOk').classList.add('show');});}
+  if(form){form.addEventListener('submit',function(ev){ev.preventDefault();
+    var g=function(id){var el=form.querySelector(id);return el&&el.value?el.value.trim():'';};
+    var n=form.querySelector('#f-name'),e=form.querySelector('#f-email'),p=form.querySelector('#f-phone'),ok=true;
+    [n,e,p].forEach(function(f){if(!f.value.trim()){f.style.borderColor='var(--mocha)';ok=false;}else{f.style.borderColor='';}});
+    if(!ok)return;
+    var body='New lesson booking request from muzehouse.us\n\n'
+      +'Name: '+g('#f-name')+'\n'
+      +'Phone: '+g('#f-phone')+'\n'
+      +'Email: '+g('#f-email')+'\n'
+      +'Student age: '+g('#f-age')+'\n'
+      +'Instrument: '+g('#f-instrument')+'\n'
+      +'Lesson type: '+g('#f-type')+'\n'
+      +'City: '+g('#f-city')+'\n\n'
+      +'Message:\n'+(g('#f-msg')||'(none)');
+    var mailto='mailto:mshvejk@gmail.com?subject='+encodeURIComponent('Lesson booking — '+g('#f-name'))+'&body='+encodeURIComponent(body);
+    window.location.href=mailto;
+    form.querySelectorAll('.field, button[type=submit], .note').forEach(function(el){el.style.display='none';});
+    document.getElementById('formOk').classList.add('show');
+  });}
 })();
 </script>
 </body>
