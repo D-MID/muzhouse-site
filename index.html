@@ -89,33 +89,53 @@ html.js .lines .ln > span{transform:translateY(110%)}
 .lines.in .ln > span{transform:none}
 
 /* ---------- HERO ---------- */
-.hero{background:var(--cream);position:relative;overflow:hidden;padding-top:150px;padding-bottom:90px;text-align:center}
-.hero-curves{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:min(1500px,128%);z-index:0;opacity:.5;pointer-events:none}
+.hero{background:var(--cream);position:relative;overflow:hidden;padding-top:clamp(106px,12vw,138px);padding-bottom:clamp(46px,6vw,84px)}
+.hero-curves{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:min(1500px,128%);z-index:0;opacity:.5;pointer-events:none}
 .hero-curves svg{width:100%;height:auto}
-.spark{position:absolute;color:var(--mocha);z-index:1;pointer-events:none;transform-origin:center}
+.spark{position:absolute;color:var(--mocha);z-index:5;pointer-events:none;transform-origin:center}
 .spark svg{width:100%;height:100%;display:block}
-.spark.s1{left:20%;top:30%;width:30px;height:30px;animation:twinkle 3.4s ease-in-out .6s infinite}
-.spark.s2{right:18%;top:44%;width:38px;height:38px;animation:twinkle 3.9s ease-in-out 1.4s infinite}
-.spark.s3{left:12%;bottom:20%;width:24px;height:24px;animation:twinkle 4.2s ease-in-out .2s infinite}
+.spark.s1{left:19%;top:33%;width:30px;height:30px;animation:twinkle 3.4s ease-in-out .6s infinite}
+.spark.s2{right:15%;top:46%;width:38px;height:38px;animation:twinkle 3.9s ease-in-out 1.4s infinite}
+.spark.s3{left:12%;bottom:22%;width:24px;height:24px;animation:twinkle 4.2s ease-in-out .2s infinite}
 @keyframes twinkle{0%,100%{opacity:.4;transform:scale(.9) rotate(0)}50%{opacity:.9;transform:scale(1.18) rotate(45deg)}}
-.bgletter{position:absolute;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(40px,5vw,80px);color:var(--mocha);filter:blur(3px);opacity:.6;z-index:0;pointer-events:none;user-select:none}
-.hero-inner{position:relative;z-index:3;max-width:1100px;margin-inline:auto}
-.hero h1{font-family:'Cormorant Garamond',serif;font-weight:500;color:var(--display);font-size:clamp(3.4rem,11vw,8.5rem);line-height:.95;
-  text-shadow:0 0 1px rgba(253,246,234,.85),0 0 16px rgba(253,246,234,.7),0 0 36px rgba(253,246,234,.5)}
-.hero h1 em{font-style:italic;font-weight:500}
-.hero-arch{position:relative;z-index:2;width:clamp(240px,30vw,380px);aspect-ratio:413/503;margin:clamp(-30px,-3vw,-10px) auto 0;
-  animation:archIn 1.3s var(--ease) .1s both}
-.hero-arch .frame-img{position:absolute;inset:0;border-radius:200px 200px 6px 6px;overflow:hidden;box-shadow:0 30px 60px -32px rgba(60,54,47,.45)}
+.bgletter{position:absolute;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(40px,5vw,80px);color:var(--mocha);filter:blur(3px);opacity:.55;z-index:0;pointer-events:none;user-select:none}
+
+.hero-stage{position:relative;max-width:1600px;margin:0 auto;width:100%;z-index:1}
+.hero-title{display:contents}
+.hl-modern,.hl-music{font-family:'Cormorant Garamond',serif;font-weight:500;color:var(--display);line-height:.9;white-space:nowrap;margin:0;
+  text-shadow:0 0 12px rgba(253,246,234,.55),0 0 30px rgba(253,246,234,.4);animation:riseIn 1.1s var(--ease) both}
+.hl-modern{animation-delay:.15s}.hl-music{animation-delay:.3s}
+.hl-modern em,.hl-music em{font-style:italic;font-weight:500}
+@keyframes riseIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+.hero-arch .frame-img{position:absolute;inset:0;border-radius:200px 200px 6px 6px;overflow:hidden;box-shadow:0 30px 60px -32px rgba(60,54,47,.42)}
 .hero-arch img{position:absolute;left:0;top:-6.6%;width:100%;height:123%;object-fit:cover;animation:zoom 30s var(--ease) forwards}
 .hero-arch .fade{position:absolute;inset:0;border-radius:200px 200px 6px 6px;background:linear-gradient(to top,rgba(253,246,234,0) 24%,var(--cream))}
 @keyframes zoom{from{transform:scale(1)}to{transform:scale(1.05)}}
 @keyframes archIn{from{opacity:0;clip-path:inset(0 0 22% 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
-.hero-sub{position:relative;z-index:3;font-size:clamp(1rem,1.4vw,1.2rem);color:var(--espresso);font-weight:400;letter-spacing:.3px;margin:26px auto 0;max-width:34ch;
-  animation:fadeUp 1s var(--ease) .55s both}
-.hero-actions{position:relative;z-index:3;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:26px;animation:fadeUp 1s var(--ease) .68s both}
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-.hero-meta{position:relative;z-index:3;display:flex;gap:24px;flex-wrap:wrap;justify-content:center;margin-top:34px;font-size:.74rem;letter-spacing:.06em;color:var(--cocoa);text-transform:uppercase}
-.hero-meta b{color:var(--espresso);font-weight:600}
+.hero-sub{font-family:'Montserrat',sans-serif;color:var(--espresso);font-weight:400;letter-spacing:.3px;text-align:center;margin:0;animation:fadeUp 1s var(--ease) .55s both}
+.hero-cta-wrap{text-align:center;animation:fadeUp 1s var(--ease) .68s both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.hero-meta{display:none}
+/* desktop — Figma overlapping composition (image in front, words around it) */
+@media(min-width:981px){
+  .hero-stage{aspect-ratio:1600/1010;container-type:inline-size}
+  .hl-modern{position:absolute;left:9.6%;top:7%;font-size:10.7cqw;z-index:2}
+  .hl-music{position:absolute;left:25.5%;top:24.5%;font-size:10.7cqw;z-index:2}
+  .hero-arch{position:absolute;left:50%;top:18%;transform:translateX(-50%);width:25.8%;height:49.8%;z-index:3;animation:archIn 1.3s var(--ease) .1s both}
+  .hero-sub{position:absolute;left:0;right:0;top:71%;margin-inline:auto;max-width:30%;font-size:1.3cqw;z-index:4}
+  .hero-cta-wrap{position:absolute;left:0;right:0;top:76.5%;z-index:4}
+  .hero-cta-wrap .btn{font-size:1.3cqw}
+}
+/* mobile/tablet — stacked, centered */
+@media(max-width:980px){
+  .hero{text-align:center}
+  .hero-stage{display:flex;flex-direction:column;align-items:center}
+  .hl-modern,.hl-music{font-size:clamp(52px,15vw,116px);line-height:.98}
+  .hero-arch{position:relative;width:min(290px,76%);aspect-ratio:413/503;margin:8px auto 0;animation:archIn 1.3s var(--ease) .1s both}
+  .hero-sub{font-size:clamp(16px,2.4vw,20px);max-width:32ch;margin:24px auto 0}
+  .hero-cta-wrap{margin-top:22px}
+  .bgletter{display:none}
+}
 
 /* ---------- WHY MUSIC ---------- */
 .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(22px,2.4vw,44px)}
@@ -349,19 +369,20 @@ footer .tag{margin:16px 0 0;max-width:30ch;font-size:.9rem;line-height:1.6}
   <span class="spark s1" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 6.4 5 10.8 12 12-7 1.2-11.4 5.6-12 12-.6-6.4-5-10.8-12-12 7-1.2 11.4-5.6 12-12z"/></svg></span>
   <span class="spark s2" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 6.4 5 10.8 12 12-7 1.2-11.4 5.6-12 12-.6-6.4-5-10.8-12-12 7-1.2 11.4-5.6 12-12z"/></svg></span>
   <span class="spark s3" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 6.4 5 10.8 12 12-7 1.2-11.4 5.6-12 12-.6-6.4-5-10.8-12-12 7-1.2 11.4-5.6 12-12z"/></svg></span>
-  <div class="hero-inner wrap">
-    <h1 class="lines" data-mask><em>M</em>odern <em>M</em>usic <em>S</em>chool</h1>
+  <div class="hero-stage">
+    <h1 class="hero-title">
+      <span class="hl-modern"><em>M</em>odern</span>
+      <span class="hl-music"><em>M</em>usic <em>S</em>chool</span>
+    </h1>
     <div class="hero-arch">
       <div class="frame-img"><img src="images/hero-arch.jpg" alt="MuzHouse instructors in a golden Sacramento meadow at sunset" fetchpriority="high" /></div>
       <div class="fade" aria-hidden="true"></div>
     </div>
-    <p class="hero-sub">A modern music school that comes to your home — private lessons in your living room, online, or at our studios across Sacramento.</p>
-    <div class="hero-actions">
-      <a href="#book" class="btn btn-primary">Book a Lesson
+    <p class="hero-sub">Modern music school that comes to your home.</p>
+    <div class="hero-cta-wrap">
+      <a href="#book" class="btn btn-primary" style="text-transform:capitalize">Book a Lesson
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <a href="#instruments" class="btn btn-ghost">Explore Lessons</a>
     </div>
-    <div class="hero-meta"><span><b>We come to you</b></span><span><b>Ages 4 to adult</b></span><span><b>$60 per lesson</b></span><span><b>10+ cities &amp; online</b></span></div>
   </div>
 </section>
 
