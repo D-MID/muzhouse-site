@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>MuzHouse — In-Home Music Lessons in Sacramento | A Modern Music School That Comes To You</title>
-<meta name="description" content="MuzHouse is a modern music school that comes to your home. Private guitar, violin, piano, voice, drums & more across Sacramento, Roseville, Rocklin, Folsom & Granite Bay — or online. $60 per lesson. Book a lesson today." />
+<meta name="description" content="MuzHouse is a modern music school that comes to your home. Private guitar, violin, piano, voice, drums & more across Sacramento, Roseville, Rocklin, Folsom & Granite Bay — or online. From $40 per lesson. Book a lesson today." />
 <meta name="theme-color" content="#FDF6EA" />
 <link rel="canonical" href="https://muzehouse.us/" />
 <meta property="og:type" content="website" />
@@ -239,6 +239,13 @@ html.js .inst-card.shown{opacity:1;transform:none}
 .price-card .amt{font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--display);font-size:clamp(4rem,8vw,6rem);line-height:1;margin:6px 0 2px}
 .price-card .amt span{font-size:1.3rem;color:var(--cocoa);font-style:italic}
 .price-card .per{color:var(--cocoa);margin-bottom:24px}
+.price-tiers{display:flex;flex-direction:column;margin:8px 0 22px}
+.price-tiers .tier{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding:16px 0;border-bottom:1px solid rgba(76,67,59,.14)}
+.price-tiers .tier:first-child{padding-top:0}
+.price-tiers .tier:last-child{border-bottom:0;padding-bottom:0}
+.price-tiers .amt{font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--display);font-size:clamp(2.8rem,5.5vw,4.2rem);line-height:.85}
+.price-tiers .amt span{font-size:1.05rem;color:var(--cocoa);font-style:italic}
+.price-tiers .dur{color:var(--cocoa);font-size:.98rem;font-weight:500}
 .price-card .btn{width:100%}
 .price-list{list-style:none;padding:0;margin:0}
 .price-list li{display:flex;gap:14px;align-items:flex-start;padding:15px 0;border-top:1px solid var(--line);font-size:.98rem}
@@ -507,8 +514,11 @@ footer .tag{margin:16px 0 0;max-width:30ch;font-size:.9rem;line-height:1.6}
     <div class="price-grid">
       <div class="price-card reveal">
         <span class="tag">Private Lessons</span>
-        <div class="amt">$60<span> / lesson</span></div>
-        <p class="per">Weekly 30, 45, or 60-minute lessons — in your home, online, or at our studios.</p>
+        <div class="price-tiers">
+          <div class="tier"><span class="amt">$60<span>/lesson</span></span><span class="dur">45-minute lesson</span></div>
+          <div class="tier"><span class="amt">$40<span>/lesson</span></span><span class="dur">30-minute lesson</span></div>
+        </div>
+        <p class="per">In your home, online, or at our studios — we come to you, every week.</p>
         <a href="#book" class="btn btn-primary">Book a Lesson</a>
       </div>
       <ul class="price-list reveal" data-delay="1">
@@ -566,7 +576,7 @@ footer .tag{margin:16px 0 0;max-width:30ch;font-size:.9rem;line-height:1.6}
     <div class="sec-head center reveal"><p class="kicker">Good questions</p><h2 class="h2" id="faq-h">Everything you're <em>wondering</em></h2></div>
     <div class="faq reveal">
       <details><summary>Where do you travel for in-home lessons?<span class="pm"></span></summary><div class="ans"><p>We teach in-home across Sacramento, Roseville, Rocklin, Folsom, Granite Bay, Loomis, Lincoln, Fair Oaks, Citrus Heights, and Elk Grove. Outside that radius, online lessons are available worldwide with the same teachers.</p></div></details>
-      <details><summary>How much do lessons cost?<span class="pm"></span></summary><div class="ans"><p>Private lessons are <b>$60 per lesson</b> — and that includes us coming to your home. No registration fees, no hidden pricing, no long-term contracts. Online and studio lessons are the same rate.</p></div></details>
+      <details><summary>How much do lessons cost?<span class="pm"></span></summary><div class="ans"><p>Private lessons are <b>$60 for a 45-minute lesson</b> or <b>$40 for a 30-minute lesson</b> — and that includes us coming to your home. No registration fees, no hidden pricing, no long-term contracts. Online and studio lessons are the same rate.</p></div></details>
       <details><summary>How does scheduling work?<span class="pm"></span></summary><div class="ans"><p>You pick a recurring weekly time that fits your family — mornings, after school, evenings, or weekends. Need to move a lesson? Just let your teacher know in advance and we'll find another slot.</p></div></details>
       <details><summary>Do you really teach online?<span class="pm"></span></summary><div class="ans"><p>Yes. Our online lessons are structured, camera-ready, and just as personal as in-home — ideal for busy weeks, travel, or families outside our driving radius.</p></div></details>
       <details><summary>Do you work with charter &amp; homeschool families?<span class="pm"></span></summary><div class="ans"><p>Absolutely — charter and homeschool families are a big part of MuzHouse. We're familiar with charter enrichment funding and can provide the documentation and invoicing your program needs.</p></div></details>
@@ -592,7 +602,7 @@ footer .tag{margin:16px 0 0;max-width:30ch;font-size:.9rem;line-height:1.6}
     <div class="book-info reveal">
       <p class="kicker">Book a Lesson</p>
       <h2 class="h2" id="book-h" style="margin:.3rem 0 0">Let's get <em>started</em></h2>
-      <p class="lede" style="margin-top:1rem">Send us a note and we'll be in touch within one business day to schedule your first lesson. Lessons are <b>$60</b>, and payment is handled securely online.</p>
+      <p class="lede" style="margin-top:1rem">Send us a note and we'll be in touch within one business day to schedule your first lesson. Lessons are <b>$40</b> (30 min) or <b>$60</b> (45 min), and payment is handled securely online.</p>
       <ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg><span><b>Call or text</b><span>279-214-5427</span></span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg><span><b>Email</b><span>mshvejk@gmail.com</span></span></li>
@@ -646,16 +656,16 @@ footer .tag{margin:16px 0 0;max-width:30ch;font-size:.9rem;line-height:1.6}
       <div><h4>Company</h4><ul><li><a href="#about">About Us</a></li><li><a href="#teachers">Teachers</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#areas">Areas we serve</a></li><li><a href="#faq">FAQ</a></li></ul></div>
       <div><h4>Get in touch</h4><ul><li><a href="tel:+12792145427">279-214-5427</a></li><li><a href="mailto:mshvejk@gmail.com">mshvejk@gmail.com</a></li><li><a href="https://instagram.com/shvejk" target="_blank" rel="noopener">@shvejk</a></li><li><a href="#book">Book a Lesson</a></li></ul></div>
     </div>
-    <div class="foot-bot"><span>© 2026 MuzHouse · A Modern Music School That Comes To You</span><span>Private lessons $60 · Sacramento · Roseville · Rocklin · Folsom · Granite Bay</span></div>
+    <div class="foot-bot"><span>© 2026 MuzHouse · A Modern Music School That Comes To You</span><span>Private lessons from $40 · Sacramento · Roseville · Rocklin · Folsom · Granite Bay</span></div>
   </div>
 </footer>
 
 <!-- ============ SCHEMA ============ -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://muzehouse.us/#business","name":"MuzHouse","description":"A modern music school that comes to your home. In-home, online, and studio music lessons across Greater Sacramento.","slogan":"A modern music school that comes to your home","url":"https://muzehouse.us/","telephone":"+1-279-214-5427","email":"mshvejk@gmail.com","priceRange":"$60 per lesson","image":"https://muzehouse.us/images/hero-arch.jpg","areaServed":["Sacramento CA","Roseville CA","Rocklin CA","Folsom CA","Granite Bay CA","Loomis CA","Lincoln CA","Fair Oaks CA","Citrus Heights CA","Elk Grove CA","Online Worldwide"],"address":{"@type":"PostalAddress","addressLocality":"Sacramento","addressRegion":"CA","addressCountry":"US"},"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"In-Home Music Lessons"},"price":"60","priceCurrency":"USD"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Online Music Lessons"},"price":"60","priceCurrency":"USD"}],"sameAs":["https://instagram.com/shvejk"]}
+{"@context":"https://schema.org","@type":"LocalBusiness","@id":"https://muzehouse.us/#business","name":"MuzHouse","description":"A modern music school that comes to your home. In-home, online, and studio music lessons across Greater Sacramento.","slogan":"A modern music school that comes to your home","url":"https://muzehouse.us/","telephone":"+1-279-214-5427","email":"mshvejk@gmail.com","priceRange":"$40–$60 per lesson","image":"https://muzehouse.us/images/hero-arch.jpg","areaServed":["Sacramento CA","Roseville CA","Rocklin CA","Folsom CA","Granite Bay CA","Loomis CA","Lincoln CA","Fair Oaks CA","Citrus Heights CA","Elk Grove CA","Online Worldwide"],"address":{"@type":"PostalAddress","addressLocality":"Sacramento","addressRegion":"CA","addressCountry":"US"},"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"30-Minute Private Music Lesson"},"price":"40","priceCurrency":"USD"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"45-Minute Private Music Lesson"},"price":"60","priceCurrency":"USD"}],"sameAs":["https://instagram.com/shvejk"]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where do you travel for in-home music lessons?","acceptedAnswer":{"@type":"Answer","text":"We teach in-home across Sacramento, Roseville, Rocklin, Folsom, Granite Bay, Loomis, Lincoln, Fair Oaks, Citrus Heights and Elk Grove. Online lessons are available worldwide."}},{"@type":"Question","name":"How much do music lessons cost?","acceptedAnswer":{"@type":"Answer","text":"Private lessons are $60 per lesson, including in-home travel. No registration or hidden fees."}},{"@type":"Question","name":"Do you offer online music lessons?","acceptedAnswer":{"@type":"Answer","text":"Yes. Online lessons are structured and personal, available worldwide."}},{"@type":"Question","name":"Do you work with charter and homeschool families?","acceptedAnswer":{"@type":"Answer","text":"Yes. We work with charter enrichment funding and homeschool families, and provide documentation and invoicing."}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where do you travel for in-home music lessons?","acceptedAnswer":{"@type":"Answer","text":"We teach in-home across Sacramento, Roseville, Rocklin, Folsom, Granite Bay, Loomis, Lincoln, Fair Oaks, Citrus Heights and Elk Grove. Online lessons are available worldwide."}},{"@type":"Question","name":"How much do music lessons cost?","acceptedAnswer":{"@type":"Answer","text":"Private lessons are $60 for a 45-minute lesson or $40 for a 30-minute lesson, including in-home travel. No registration or hidden fees."}},{"@type":"Question","name":"Do you offer online music lessons?","acceptedAnswer":{"@type":"Answer","text":"Yes. Online lessons are structured and personal, available worldwide."}},{"@type":"Question","name":"Do you work with charter and homeschool families?","acceptedAnswer":{"@type":"Answer","text":"Yes. We work with charter enrichment funding and homeschool families, and provide documentation and invoicing."}}]}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Liuba","jobTitle":"Violin & Viola Instructor","worksFor":{"@id":"https://muzehouse.us/#business"},"knowsAbout":["Violin","Viola","Piano","Classical Music"]}
